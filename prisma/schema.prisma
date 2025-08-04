@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model AddJob {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  job_title       String
+  job_type        String
+  job_description String
+  job_salary      Float
+  employment_type String
+  job_location    String
+  // job_id          String
+  // employer_name   String
+  // employer_logo   String
+}
+
+enum Role {
+  EMPLOYER
+  EMPLOYEE
+}
+
+model User {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  email    String   @unique
+  password String
+  role     Role?    @default(EMPLOYEE)
+  company  Company? //user hamesha hoga but ho sakta hai uski company na ho
+  // resume   Resume?
+}
+
+// model Resume {
+//   id             String @id @default(auto()) @map("_id") @db.ObjectId
+//   qualification  String
+//   education      String
+//   cgpa           String
+//   graduationYear String
+//   OwnerId        String @unique @db.ObjectId
+//   owner          User   @relation(fields: [OwnerId], references: [id])
+// }
+
+model Company {
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  companyName        String
+  companyDescription String
+  companyOwnerId     String  @unique @db.ObjectId
+  companyLogo        String?
+  owner              User    @relation(fields: [companyOwnerId], references: [id])
+}

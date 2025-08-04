@@ -1,0 +1,42 @@
+//@ts-nocheck
+"use client";
+import Link from "next/link";
+import React, { createContext, useContext, useEffect, useState } from "react";
+
+const savedContext = createContext(null);
+
+export default function SavedJobsProvider({ children }) {
+  const [saved, setSaved] = useState([]);
+
+  useEffect(() => {
+    const localData = JSON.parse(localStorage.getItem("savedJobs")) ?? [];
+    setSaved(localData);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("savedJobs", JSON.stringify(saved));
+  }, [saved]);
+
+  function addToSave(job) {
+    if (saved.find((favJob) => job.id === favJob.id)) {
+      alert("job is already saved");
+    } else {
+      setSaved((prev) => [...prev, job]);
+    }
+  }
+
+  function removeFromSave(id) {
+    console.log("prev", saved);
+    setSaved((prev) => prev.filter((job) => job.id !== id));
+  }
+
+  return (
+    <savedContext.Provider value={{ saved, addToSave, removeFromSave }}>
+      {children}
+    </savedContext.Provider>
+  );
+}
+
+export function useSavedContext() {
+  return useContext(savedContext);
+}

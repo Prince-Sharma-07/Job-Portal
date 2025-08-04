@@ -1,6 +1,11 @@
+import Header from "@/components/layout/Header";
+import SavedJobsProvider from "@/contexts/SavedJobsProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ThemeContextProvider from "@/contexts/ThemeContextProvider";
+import UserContextProvider from "@/contexts/UserContextProvider";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +32,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeContextProvider>
+          <UserContextProvider>
+            <SavedJobsProvider>
+              <Header />
+              {children}
+              <Footer />
+            </SavedJobsProvider>
+          </UserContextProvider>
+        </ThemeContextProvider>
       </body>
     </html>
   );
