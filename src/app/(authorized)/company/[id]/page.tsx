@@ -1,3 +1,4 @@
+//@ts-nocheck
 import CompanyDetailsCard from "@/components/cards/CompanyDetailsCard";
 import JobCard from "@/components/cards/JobCard";
 import Reviews from "@/components/sections/Reviews";

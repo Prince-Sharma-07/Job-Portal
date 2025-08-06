@@ -52,7 +52,7 @@ export default function ViewApplicants({ job }: JobWithCompany) {
 
         <Flex direction="column" gap="3">
           {isLoading && <Spinner size={"3"} />}
-          {applicants.map((app: Application) => (
+          {applicants?.map((app: Application) => (
             <Card key={app.id}>
               <Badge>{app.user_id}</Badge>
             </Card>
