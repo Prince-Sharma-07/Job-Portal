@@ -1,12 +1,20 @@
 //@ts-nocheck
+import getCurrUser from "@/helper";
 import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
+  const user = await getCurrUser();
+
+  const dataToSave = {
+    ...body,
+    company_id: user?.company?.id,
+  };
+
   try {
-    const job = await prismaClient.addJob.create({
-      data: body,
+    const job = await prismaClient.Job.create({
+      data: dataToSave,
     });
     return NextResponse.json({
       success: true,
@@ -25,21 +33,49 @@ export async function GET(req: NextRequest) {
   const url = req.url; //<---  http://localhost:3000/search?q=Prince&&jobType=Full-Time
   const urlObj = new URL(url);
   const query = urlObj.searchParams.get("q") || "";
-  const jobType = urlObj.searchParams.get("jt") || "On site";
-  const empType = urlObj.searchParams.get("et") || "Full-Time";
-  const salary = urlObj.searchParams.get("sr") ? parseFloat(urlObj.searchParams.get("sr")) : 0;
+  const jobType = urlObj.searchParams.get("jt") || "";
+  const empType = urlObj.searchParams.get("et") || "";
+  const salary = urlObj.searchParams.get("sr")
+    ? parseFloat(urlObj.searchParams.get("sr"))
+    : 0;
 
-  try {
-    const jobs = await prismaClient.addJob.findMany({
-      where: {
+  const where = {
+    OR: [
+      {
         job_title: {
           contains: query,
           mode: "insensitive",
         },
-        job_type: jobType,
-        employment_type: empType,
-        job_salary: {
-          gte: salary,
+      },
+      {
+        company: {
+          companyName: {
+            contains: query,
+            mode: "insensitive",
+          },
+        },
+      },
+    ],
+    job_salary: {
+      gte: salary,
+    },
+  };
+
+  if (jobType) {
+    where.job_type = jobType;
+  }
+  if (empType) {
+    where.employment_type = empType;
+  }
+
+  try {
+    const jobs = await prismaClient.job.findMany({
+      where: where,
+      include: {
+        company: {
+          include: {
+            owner: true,
+          },
         },
       },
     });

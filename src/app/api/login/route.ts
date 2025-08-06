@@ -1,20 +1,19 @@
-//@ts-nocheck
 import { createToken } from "@/services/jwt";
 import prismaClient from "@/services/prisma";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
+import { User } from "../../../../generated/prisma";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-
 
   try{
   const user = await prismaClient.user.findUnique({
     where: {
       email: body.email,
     },
-  });
+  }) as User;
  
   if (user?.password === body?.password) {
     const userTokenData = {
@@ -30,7 +29,7 @@ export async function POST(req: NextRequest) {
       message: "Invalid Credentials",
     });
   }
-}catch(err){
+}catch(err : any){
   console.log(err);
   return NextResponse.json({
     success: false,

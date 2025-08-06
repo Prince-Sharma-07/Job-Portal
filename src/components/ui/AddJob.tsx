@@ -3,6 +3,7 @@
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { useState } from "react";
 import { AddJob } from "../../../generated/prisma";
+import { useUserContext } from "@/contexts/UserContextProvider";
 
 export default function AddJob() {
   const [job_title, setTitle] = useState<string>("");

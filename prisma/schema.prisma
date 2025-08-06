@@ -14,18 +14,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model AddJob {
-  id              String @id @default(auto()) @map("_id") @db.ObjectId
-  job_title       String
-  job_type        String
-  job_description String
-  job_salary      Float
-  employment_type String
-  job_location    String
-  // job_id          String
-  // employer_name   String
-  // employer_logo   String
-}
+// model AddJob {
+//   id              String @id @default(auto()) @map("_id") @db.ObjectId
+//   job_title       String
+//   job_type        String
+//   job_description String
+//   job_salary      Float
+//   employment_type String
+//   job_location    String
+//   job_id          String
+//   employer_name   String
+//   employer_logo   String
+// }
 
 enum Role {
   EMPLOYER
@@ -33,13 +33,58 @@ enum Role {
 }
 
 model User {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  email    String   @unique
-  password String
-  role     Role?    @default(EMPLOYEE)
-  company  Company? //user hamesha hoga but ho sakta hai uski company na ho
-  // resume   Resume?
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  email       String        @unique
+  password    String
+  role        Role?         @default(EMPLOYEE)
+  company     Company? //user hamesha hoga but ho sakta hai uski company na ho
+  review      Review[]
+  Application Application[]
 }
+
+model Company {
+  id                 String        @id @default(auto()) @map("_id") @db.ObjectId
+  companyName        String
+  companyDescription String
+  companyOwnerId     String        @unique @db.ObjectId
+  companyLogo        String?
+  owner              User          @relation(fields: [companyOwnerId], references: [id])
+  jobs               Job[]
+}
+
+model Job {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  job_title       String
+  job_type        String
+  job_description String
+  job_salary      Float
+  employment_type String
+  job_location    String
+  company_id      String  @db.ObjectId
+  company         Company @relation(fields: [company_id], references: [id])
+}
+
+model Review {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  content    String
+  user_id    String @db.ObjectId
+  user       User   @relation(fields: [user_id], references: [id])
+  company_id String
+}
+
+model Application {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id   String   @db.ObjectId
+  user      User     @relation(fields: [user_id], references: [id])
+  job_id    String
+}
+
+// one to one mapping : we are ensuring no two companies have same owner id
+// include : {    it is doing second database call reducing the two subsequent calls overhead
+// company : true       
+//}
+
+// one to many relationship : one company can have many jobs but one job only belongs to one company. 
 
 // model Resume {
 //   id             String @id @default(auto()) @map("_id") @db.ObjectId
@@ -50,12 +95,3 @@ model User {
 //   OwnerId        String @unique @db.ObjectId
 //   owner          User   @relation(fields: [OwnerId], references: [id])
 // }
-
-model Company {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
-  companyName        String
-  companyDescription String
-  companyOwnerId     String  @unique @db.ObjectId
-  companyLogo        String?
-  owner              User    @relation(fields: [companyOwnerId], references: [id])
-}

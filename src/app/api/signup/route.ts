@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     //   },
     //   { status: 200 }
     // );  200 sab ok hai , 300 site temporarily ya permanently khi or redirect ya move kr di gye h , 404 not found ,401unauthorized, 403 not allowed, 500 some problem in server
-  } catch (err) {
+  } catch (err : any) {
     return NextResponse.json(
       {
         success: false,

@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { verifyToken } from "./services/jwt";
 import prismaClient from "./services/prisma";
 
-export default async function getCurrUser() {
+export default async function getCurrUser() : User {
   const cookie = await cookies();
   const token = cookie.get("token")?.value;
   if (!token) return null;

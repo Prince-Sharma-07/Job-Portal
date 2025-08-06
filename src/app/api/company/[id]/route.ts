@@ -12,13 +12,24 @@ export async function GET(
       where: {
         id: id,
       },
-      include: {
-        owner: {
-          // true hona tha yaha pr hi but password bhi omit krna hai isiliye esa kiya...
+      include: {  // true hona tha yaha pr hi but password bhi omit krna hai isiliye esa kiya...
+        owner: { 
+          include : {
+            review : true
+          },
           omit: {
             password: true,
           },
         },
+        jobs : {              // it is not neccessary to do these unnecessary calls because on company page we can easily get this same data using company api call.
+          include : {
+            company : {
+              include : {
+                  owner : true
+              }  
+            }
+          }
+        }
       },
     });
 

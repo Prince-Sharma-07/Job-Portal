@@ -1,13 +1,20 @@
-//@ts-nocheck
 "use client";
-import getCurrUser from "@/helper";
-import React, { useContext, useEffect, useState } from "react";
-import { createContext } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { Company, User } from "../../generated/prisma";
 
-const userContext = createContext(null);
+type UwC = User  & {company : Company | null}
 
-export default function UserContextProvider({ children }) {
-  const [userData, setUserData] = useState(null);
+const userContext = createContext<{
+  userData? : UwC | null,
+  setUserData? : (value : UwC)=>void
+}>({ });
+
+export default function UserContextProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const [userData, setUserData] = useState<UwC | null>(null);
 
   useEffect(() => {
     async function getData() {
@@ -19,7 +26,7 @@ export default function UserContextProvider({ children }) {
   }, []);
 
   return (
-    <userContext.Provider value={{ userData }}>{children}</userContext.Provider>
+    <userContext.Provider value={{ userData , setUserData }}>{children}</userContext.Provider>
   );
 }
 
