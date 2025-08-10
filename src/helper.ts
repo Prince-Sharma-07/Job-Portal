@@ -8,7 +8,7 @@ export default async function getCurrUser() : Promise<UserWithCompany | null> {
   const token = cookie.get("token")?.value;
   if (!token) return null;
 
-  const data = verifyToken(token);
+  const data = verifyToken(token) || "";
   if (!data) return null;
 
   const user = await prismaClient.user.findUnique({
@@ -17,10 +17,7 @@ export default async function getCurrUser() : Promise<UserWithCompany | null> {
     },
     include: {
       company: true,
-    }, //relations ko vo khudse include nahi krega isiliye hame include krna pdega , similarly company ko findUnique krte hue owner of include true kr sakte hai
-    omit: {
-      password: true,
-    },
+    },                   //relations ko vo khudse include nahi krega isiliye hame include krna pdega , similarly company ko findUnique krte hue owner of include true kr sakte hai
   }) as UserWithCompany;
 
   if (!user) return null;
