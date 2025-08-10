@@ -1,20 +1,11 @@
 "use client";
-import {
-  Badge,
-  Button,
-  Card,
-  Dialog,
-  Flex,
-  Spinner,
-  Text,
-  TextField,
-} from "@radix-ui/themes";
-import React, { useEffect, useState } from "react";
-import { Application, Company, Job, User } from "../../../generated/prisma";
 import { useUserContext } from "@/contexts/UserContextProvider";
 import { JobWithCompany } from "@/types";
+import { Badge, Button, Card, Dialog, Flex, Spinner } from "@radix-ui/themes";
+import { useEffect, useState } from "react";
+import { Application } from "../../../generated/prisma";
 
-export default function ViewApplicants({ job }: JobWithCompany) {
+export default function ViewApplicants({ job }: { job: JobWithCompany }) {
   const { userData } = useUserContext();
   const [applicants, setApplicants] = useState<Application[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -32,13 +23,13 @@ export default function ViewApplicants({ job }: JobWithCompany) {
     getApplicants();
   }, []);
 
-  async function handleDelete( id : string){
-    try{
-      const res = await fetch('http://localhost:3000/api/applicants/' + id);
+  async function handleDelete(id: string) {
+    try {
+      const res = await fetch("http://localhost:3000/api/applicants/" + id);
       const data = await res.json();
-      alert(data.message)
-    }catch(err){
-      alert("something went wrong")
+      alert(data.message);
+    } catch (err) {
+      alert("something went wrong");
     }
   }
 
@@ -65,7 +56,12 @@ export default function ViewApplicants({ job }: JobWithCompany) {
           {applicants?.map((app: Application) => (
             <Card key={app.id}>
               <Badge>{app.user_id}</Badge>
-              <button onClick={handleDelete} className="px-2 p-1 rounded-md">Delete</button>
+              <button
+                onClick={() => handleDelete(app.id)}
+                className="px-2 p-1 rounded-md"
+              >
+                Delete
+              </button>
             </Card>
           ))}
         </Flex>

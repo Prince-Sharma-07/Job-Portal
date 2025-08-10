@@ -1,5 +1,6 @@
 import Link from "next/link";
 import JobCard from "../cards/JobCard";
+import { JobWithCompanyWithOwner } from "@/types";
 
 export default async function RecentJobs() {
   const res = await fetch("http://localhost:3000/api/recent-jobs");
@@ -20,7 +21,7 @@ export default async function RecentJobs() {
         </Link>
       </div>
       <div className="flex flex-col w-full gap-5 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-14 pb-12">
-        {recentJobs.length ? recentJobs.map((job) => (
+        {recentJobs.length ? recentJobs.map((job : JobWithCompanyWithOwner) => (
           <JobCard key={job.id} job={job} />
         )) : <div className="text-xl font-medium">No jobs available... :( </div>}
       </div>

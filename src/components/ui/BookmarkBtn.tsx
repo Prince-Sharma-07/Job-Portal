@@ -2,7 +2,6 @@
 'use client'
 import { useSavedContext } from '@/contexts/SavedJobsProvider'
 import Image from 'next/image'
-import React from 'react'
 
 export default function BookmarkBtn({job}) {
   const {addToSave} = useSavedContext()

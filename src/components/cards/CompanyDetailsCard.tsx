@@ -1,4 +1,6 @@
-export default function CompanyDetailCard({company}) {
+import { CompanyWithOwner } from "@/types";
+
+export default function CompanyDetailCard({company} : {company : CompanyWithOwner}) {
   return (
     <div className=' flex flex-col gap-2 items-center'>
        <h1 className='text-4xl font-bold text-center'>{company?.companyName}</h1>

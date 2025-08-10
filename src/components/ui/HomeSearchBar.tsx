@@ -1,18 +1,16 @@
 //@ts-nocheck
 "use client";
-import { Separator } from "@radix-ui/themes";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import * as React from "react";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
+import { Separator } from "@radix-ui/themes";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function HomeSearchBar() {
   const [input, setInput] = useState("");

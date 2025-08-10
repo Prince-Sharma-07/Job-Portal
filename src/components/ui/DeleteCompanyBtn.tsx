@@ -1,8 +1,7 @@
 "use client";
 import { useUserContext } from "@/contexts/UserContextProvider";
-import { DeleteIcon, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { redirect } from "next/navigation";
-import React from "react";
 import { Company } from "../../../generated/prisma";
 
 export default function DeleteCompanyBtn({

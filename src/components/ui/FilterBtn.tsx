@@ -1,8 +1,7 @@
 import { BriefcaseBusiness, Funnel } from "lucide-react";
-import React from "react";
 import { SidebarTrigger } from "./sidebar";
 
-export default function FilterBtn({ query } ) {
+export default function FilterBtn({ query } : {query : string} ) {
   return (
     <div>
       {query ? (

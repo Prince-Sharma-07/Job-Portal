@@ -1,9 +1,9 @@
 //@ts-nocheck
 "use client";
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
+import { ClipboardPlus } from "lucide-react";
 import { useState } from "react";
 import { AddJob } from "../../../generated/prisma";
-import { useUserContext } from "@/contexts/UserContextProvider";
 
 export default function AddJob() {
   const [job_title, setTitle] = useState<string>("");
@@ -46,8 +46,8 @@ export default function AddJob() {
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <button className="w-full px-3 py-2 text-start rounded bg-gray-200 text-black transition cursor-pointer">
-          Add Job
+        <button className="w-full items-center justify-start flex gap-2 px-2.5 py-2 rounded hover:text-black hover:bg-gray-200 transition">
+          <ClipboardPlus className="h-6 w-6" /> Add Job
         </button>
       </Dialog.Trigger>
 
@@ -124,7 +124,7 @@ export default function AddJob() {
             >
               <option value="" disabled>
                 Select employment type
-              </option> 
+              </option>
               <option value="Full-Time">Full-Time</option>
               <option value="Part-Time">Part-Time</option>
               <option value="Internship">Internship</option>

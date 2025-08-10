@@ -1,7 +1,6 @@
 "use client";
 import { JobWithCompanyWithOwner } from "@/types";
 import Link from "next/link";
-import ApplyJobBtn from "../ui/ApplyJobBtn";
 import BookmarkBtn from "../ui/BookmarkBtn";
 
 export default function JobDetailCard({

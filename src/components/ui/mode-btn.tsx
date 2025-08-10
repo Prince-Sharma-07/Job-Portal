@@ -2,14 +2,14 @@
 import { useThemeContext } from "@/contexts/ThemeContextProvider";
 
 export default function Modebtn() {
-  const { setIsDark } = useThemeContext();
+  const { isDark, setIsDark } = useThemeContext();
   return (
     <label className="toggle text-base-content">
       <input
         type="checkbox"
         value="synthwave"
         className="theme-controller"
-        onClick={() => setIsDark((prev) => !prev)}
+        onClick={() => setIsDark(!isDark)}
       />
 
       <svg

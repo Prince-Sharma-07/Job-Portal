@@ -1,8 +1,9 @@
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import { User } from "../../../generated/prisma";
+import { UserWithCompany } from "@/types";
 
-export default function SideBar({ userData }) {
+export default function SideBar({ userData } : {userData : UserWithCompany}) {
   return (
     <div className="drawer fixed left-6 size-xl md:hidden z-50">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />

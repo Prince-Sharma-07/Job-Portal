@@ -59,7 +59,7 @@ export async function DELETE(
     });
     return NextResponse.json({
       success: true,
-      message: "User deleted successfully",
+      message: "Company deleted successfully",
     });
   } else {
     return NextResponse.json({

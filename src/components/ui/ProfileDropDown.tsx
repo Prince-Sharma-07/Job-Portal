@@ -2,9 +2,10 @@
 import { useUserContext } from "@/contexts/UserContextProvider";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Avatar, Separator } from "@radix-ui/themes";
-import { SaveIcon, SquareMousePointer, UserIcon } from "lucide-react";
+import { SquareMousePointer, UserIcon } from "lucide-react";
 import Link from "next/link";
 import AddCompanyBtn from "./AddCompanyBtn";
+import AddJob from "./AddJob";
 import Logout from "./Logout";
 import SavedBtn from "./SavedBtn";
 import ViewCompany from "./ViewCompany";
@@ -41,6 +42,10 @@ export default function ProfileDropdown() {
           <UserIcon className="h-6 w-6"/>  Profile 
           </Link>
         </DropdownMenu.Item>
+
+        {userData?.company ? <DropdownMenu.Item asChild>
+          <AddJob />
+        </DropdownMenu.Item> : null}
 
         <DropdownMenu.Item asChild>
           <Link

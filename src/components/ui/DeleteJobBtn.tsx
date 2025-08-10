@@ -1,6 +1,5 @@
 //@ts-nocheck
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
-import React from "react";
 
 export default function DeleteJobBtn() {
   async function handleDelete({ job }) {

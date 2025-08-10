@@ -1,11 +1,12 @@
 "use client";
+import { ThemeContextType } from "@/types";
 import { Theme } from "@radix-ui/themes";
 import { createContext, ReactNode, useContext, useState } from "react";
 
-const themeContext = createContext<{
-  isDark?: boolean;
-  setIsDark?: (val: boolean) => void;
-}>({});
+const themeContext = createContext<ThemeContextType>({
+  isDark: false,
+  setIsDark: () => {},
+});
 
 export default function ThemeContextProvider({
   children,

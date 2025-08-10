@@ -1,7 +1,6 @@
 //@ts-nocheck
 "use client";
-import Link from "next/link";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const savedContext = createContext(null);
 

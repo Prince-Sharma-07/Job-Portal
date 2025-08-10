@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import ApplyJobBtn from "./ApplyJobBtn";
 import { JobWithCompanyWithOwner } from "@/types";
+import { useState } from "react";
+import ApplyJobBtn from "./ApplyJobBtn";
 
 export default function ApplyDeleteBtn({
   applied,

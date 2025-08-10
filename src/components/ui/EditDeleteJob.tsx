@@ -1,8 +1,6 @@
 //@ts-nocheck
 "use client";
 import { useUserContext } from "@/contexts/UserContextProvider";
-import { Button } from "@radix-ui/themes";
-import React from "react";
 import DeleteJobBtn from "./DeleteJobBtn";
 import EditJobBtn from "./EditJobBtn";
 

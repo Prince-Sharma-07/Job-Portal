@@ -1,8 +1,6 @@
 //@ts-nocheck
 "use client";
 import { useSavedContext } from "@/contexts/SavedJobsProvider";
-import Link from "next/link";
-import React from "react";
 import { Job } from "../../../generated/prisma";
 
 export default function savedCard({ job }: { job: Job }) {

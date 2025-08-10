@@ -3,7 +3,7 @@
 import { RadioGroup } from "@radix-ui/themes";
 import { Funnel } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import SearchBar from "../ui/SearchBar";
 
 export default function FilterBar() {
