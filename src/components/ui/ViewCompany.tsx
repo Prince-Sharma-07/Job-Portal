@@ -1,7 +1,6 @@
-//@ts-nocheck
 import Link from "next/link";
 
-export default function ViewCompany({ companyId }) {
+export default function ViewCompany({ companyId }: { companyId: string }) {
   return (
     <Link
       href={"/company/" + companyId}

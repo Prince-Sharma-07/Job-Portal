@@ -1,7 +1,6 @@
-//@ts-nocheck
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export default function middleware(req) { 
+export default function middleware(req : NextRequest) { 
   const user = req.cookies.get("token")?.value;
   const pathName = req.nextUrl.pathname;
   const protectedPaths = ["/saved", "/jobs" , "/add-company" , "/company"];

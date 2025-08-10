@@ -1,15 +1,16 @@
-//@ts-nocheck
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
+import { Job } from "../../../generated/prisma";
 
-export default function DeleteJobBtn() {
-  async function handleDelete({ job }) {
+export default function DeleteJobBtn({ job } : {job : Job}) {
+
+  async function handleDelete() {
     try {
       const res = await fetch("http://localhost:3000/api/job/" + job.id, {
         method: "DELETE",
       });
       const data = await res.json();
       alert(data.message);
-    } catch (err) {
+    } catch (err : any) {
       alert(err.message);
     }
   }

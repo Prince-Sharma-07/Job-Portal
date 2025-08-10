@@ -1,9 +1,9 @@
-//@ts-nocheck
 import FilterBar from "@/components/layout/FilterBar";
 import { AppSidebar } from "@/components/ui/app-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { ReactNode } from "react";
 
-export default function layout({ children }) {
+export default function layout({ children } : {children : ReactNode}) {
   return (
     <div className="w-full flex py-8 md:px-3 lg:px-6 justify-between dark:bg-gray-900">
       {/* Left Sidebar - Sticky */}

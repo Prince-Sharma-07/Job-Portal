@@ -1,4 +1,3 @@
-//@ts-nocheck
 "use client";
 import { Tabs, TextArea } from "@radix-ui/themes";
 import { SendIcon } from "lucide-react";
@@ -46,7 +45,7 @@ export default function Reviews({
       <h2>Top Reviews</h2>
       <div className="flex flex-col gap-2">
         {reviewsList?.map((review) => (
-          <div key={review.content} >{review.content}</div>
+          <div key={review.content}>{review.content}</div>
         ))}
       </div>
     </Tabs.Content>

@@ -1,4 +1,3 @@
-//@ts-nocheck
 "use client";
 import {
   Select,
@@ -6,7 +5,7 @@ import {
   SelectGroup,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@radix-ui/themes";
 import Link from "next/link";
@@ -36,8 +35,8 @@ export default function HomeSearchBar() {
       <form
         action={"/search"}
         method="GET"
-        onFocus={()=>setActive(true)}
-        onBlur={()=>setTimeout(()=>setActive(false) , 300)}
+        onFocus={() => setActive(true)}
+        onBlur={() => setTimeout(() => setActive(false), 300)}
         className={`max-md:flex-col md:flex items-center md:h-full w-full max-md:px-[20px] max-md:py-[40px] max-md:space-y-6 ${
           suggestions.length && isActive
             ? "rounded-t-xl rounded-br-xl"
@@ -65,8 +64,8 @@ export default function HomeSearchBar() {
           </span>
 
           <div className="max-md:flex-col max-md:gap-2 px-2 justify-center items-center md:w-[28%]">
-            <Select className="border-none outline-none">
-              <SelectTrigger className="w-full border-none shadow-none text-[16px] text-[#000000]/50 px-0">
+            <Select >
+              <SelectTrigger className="w-full border-none outline-none shadow-none text-[16px] text-[#000000]/50 px-0">
                 <SelectValue placeholder="Select Employment Type" />
               </SelectTrigger>
               <SelectContent className="bg-white text-black">
@@ -109,7 +108,7 @@ export default function HomeSearchBar() {
               onClick={(e) => e.stopPropagation()}
               className="absolute top-18 left-0 w-full flex flex-col gap-1 pb-2 bg-white rounded-b-xl z-40"
             >
-              {suggestions?.map((suggestion) => (
+              {suggestions?.map((suggestion : {id : string , job_title : string}) => (
                 <Link
                   href={"/jobs/" + suggestion?.id}
                   key={suggestion?.id}
@@ -125,7 +124,7 @@ export default function HomeSearchBar() {
           type="submit"
           className={`flex text-md font-medium gap-2 items-center justify-center bg-btn-primary hover:bg-btn-hover cursor-pointer h-full max-md:w-full md:w-[20%] text-white p-2 max-md:rounded-xl md:rounded-r-xl`}
         >
-          <img src="/search-icon.svg" alt="search_icon" /> 
+          <img src="/search-icon.svg" alt="search_icon" />
           <span className="md:hidden lg:block">Search Job</span>
         </button>
       </form>

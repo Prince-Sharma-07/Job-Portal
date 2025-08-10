@@ -1,9 +1,16 @@
-//@ts-nocheck
 "use client";
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { ClipboardPlus } from "lucide-react";
 import { useState } from "react";
-import { AddJob } from "../../../generated/prisma";
+
+type addJob = {
+  job_title: string;
+  job_type: string;
+  job_description: string;
+  job_salary: number;
+  employment_type: string;
+  job_location: string;
+};
 
 export default function AddJob() {
   const [job_title, setTitle] = useState<string>("");
@@ -15,7 +22,7 @@ export default function AddJob() {
 
   async function handleAddJob() {
     const parsedSalary = parseFloat(job_salary) || 0;
-    const jobData: AddJob = {
+    const jobData: addJob = {
       job_title,
       job_type,
       job_description,
@@ -31,7 +38,7 @@ export default function AddJob() {
       });
       const data = await res.json();
       alert(data.message);
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
 

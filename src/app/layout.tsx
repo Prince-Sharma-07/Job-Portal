@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import SavedJobsProvider from "@/contexts/SavedJobsProvider";
 import ThemeContextProvider from "@/contexts/ThemeContextProvider";
 import UserContextProvider from "@/contexts/UserContextProvider";

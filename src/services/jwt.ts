@@ -10,6 +10,6 @@ export function createToken(data: Data) {
 }
 
 export function verifyToken(token: string) {
-  const decryptedData = jwt.verify(token, process.env.JWT_SECRET as string);
+  const decryptedData = jwt.verify(token, process.env.JWT_SECRET as string) as jwt.JwtPayload;
   return decryptedData;
 }

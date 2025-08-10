@@ -1,10 +1,10 @@
-//@ts-nocheck
 "use client";
 import { useUserContext } from "@/contexts/UserContextProvider";
 import DeleteJobBtn from "./DeleteJobBtn";
 import EditJobBtn from "./EditJobBtn";
+import { JobWithCompany } from "@/types";
 
-export default function EditDeleteJob({ job }) {
+export default function EditDeleteJob({ job } : {job : JobWithCompany}) {
   const { userData } = useUserContext();
 
   return (

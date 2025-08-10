@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       data: [],
     });
-    
+
   try {
     const suggestions = await prismaClient.job.findMany({
       where: {
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       success: true,
       data: suggestions,
     });
-  } catch (err : any) {
+  } catch (err: any) {
     return NextResponse.json({
       success: false,
       message: err.message,

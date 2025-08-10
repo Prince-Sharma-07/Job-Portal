@@ -1,4 +1,3 @@
-//@ts-nocheck
 // "use server";
 
 // import prismaClient from "@/services/prisma";

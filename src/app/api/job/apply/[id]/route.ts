@@ -1,11 +1,14 @@
-//@ts-nocheck
 import getCurrUser from "@/helper";
 import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }) {
+type Param = Promise<{
+  id: string;
+}>;
+
+export async function GET(req: NextRequest, { params }: { params: Param }) {
   const user = await getCurrUser();
-  const job_id = params.id;
+  const { id } = await params;
   if (!user) {
     return NextResponse.json({
       success: false,
@@ -15,7 +18,7 @@ export async function GET(req: NextRequest, { params }) {
 
   const applyToSave = {
     user_id: user?.id,
-    job_id: job_id,
+    job_id: id,
   };
 
   try {
@@ -26,7 +29,7 @@ export async function GET(req: NextRequest, { params }) {
       success: true,
       message: "Applied Successfully!",
     });
-  } catch (err) {
+  } catch (err : any) {
     return NextResponse.json({
       success: false,
       message: err.message,

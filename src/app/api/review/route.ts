@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
 
   const reviewToSave = {
     ...body,
-    user_id: user.id,
+    user_id: user?.id,
   };
 
   try {

@@ -1,11 +1,13 @@
 import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const job_id = params?.id;
+type Param = Promise<{
+  id: string;
+}>;
+
+export async function GET(req: NextRequest, { params }: { params: Param }) {
+  const p = await params;
+  const job_id = p.id;
 
   try {
     const res = await prismaClient.application.findMany({
@@ -28,8 +30,9 @@ export async function GET(
   }
 }
 
-export async function DELETE(req: NextRequest, { params }) {
-  const id = params.id;
+export async function DELETE(req: NextRequest, { params }: { params: Param }) {
+  const {id} = await params;
+
   try {
     const res = await prismaClient.application.delete({
       where: {

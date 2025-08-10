@@ -1,12 +1,16 @@
 import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params } : {params : {id : string}}) {
-  const companyId = params.id;
+type Param = Promise<{
+  id : string
+}>
+
+export async function GET(req: NextRequest, { params } : {params : Param}) {
+  const {id} = await params;
   try {
     const reviews = await prismaClient.review.findMany({
       where: {
-        company_id: companyId,
+        company_id: id,
       },
     });
     return NextResponse.json({

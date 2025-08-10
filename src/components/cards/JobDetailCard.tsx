@@ -2,6 +2,9 @@
 import { JobWithCompanyWithOwner } from "@/types";
 import Link from "next/link";
 import BookmarkBtn from "../ui/BookmarkBtn";
+import ApplyJobBtn from "../ui/ApplyJobBtn";
+import ApplyDeleteBtn from "../ui/ApplyDeleteBtn";
+import { useState } from "react";
 
 export default function JobDetailCard({
   job,
@@ -51,7 +54,7 @@ export default function JobDetailCard({
             <span>{job?.job_location}</span>
           </span>
         </div>
-        
+        <ApplyDeleteBtn job={job} applied={applied} />
       </div>
     </div>
   );

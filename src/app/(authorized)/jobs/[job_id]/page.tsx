@@ -4,8 +4,15 @@ import ViewApplicants from "@/components/ui/ViewApplicants";
 import getCurrUser from "@/helper";
 import prismaClient from "@/services/prisma";
 
-export default async function page({ params }: { params: { job_id: string } }) {
-  const id = params.job_id;
+export default async function page({
+  params,
+}: {
+  params: Promise<{
+    job_id: string;
+  }>;
+}) {
+  const p = await params;
+  const id = p.job_id;
   const res = await fetch("http://localhost:3000/api/job/" + id);
   const data = await res.json();
   const job = data.data;
@@ -13,16 +20,16 @@ export default async function page({ params }: { params: { job_id: string } }) {
 
   let userHasApplied = false;
 
-      if (user) {
-        const application = await prismaClient.application.findMany({
-          where: {
-            job_id: id,
-            user_id: user.id,
-          },
-        });
-        if (application.length > 0) userHasApplied = true;
-      }
-      
+  if (user) {
+    const application = await prismaClient.application.findMany({
+      where: {
+        job_id: id,
+        user_id: user.id,
+      },
+    });
+    if (application.length > 0) userHasApplied = true;
+  }
+
   return (
     <div className="w-full flex flex-col min-h-screen">
       <h1 className="w-full bg-black backdrop-blur-md h-50 text-4xl text-white flex items-center justify-center font-bold pt-10">

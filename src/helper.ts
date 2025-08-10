@@ -1,9 +1,9 @@
-//@ts-nocheck
 import { cookies } from "next/headers";
 import { verifyToken } from "./services/jwt";
 import prismaClient from "./services/prisma";
+import { UserWithCompany } from "./types";
 
-export default async function getCurrUser() : User {
+export default async function getCurrUser() : Promise<UserWithCompany | null> {
   const cookie = await cookies();
   const token = cookie.get("token")?.value;
   if (!token) return null;
@@ -11,7 +11,7 @@ export default async function getCurrUser() : User {
   const data = verifyToken(token);
   if (!data) return null;
 
-  const user = prismaClient.user.findUnique({
+  const user = await prismaClient.user.findUnique({
     where: {
       id: data?.id,
     },
@@ -21,7 +21,7 @@ export default async function getCurrUser() : User {
     omit: {
       password: true,
     },
-  });
+  }) as UserWithCompany;
 
   if (!user) return null;
 

@@ -1,7 +1,7 @@
 "use client";
-import { JobWithCompanyWithOwner } from "@/types";
-import { useState } from "react";
+import React, { useState } from "react";
 import ApplyJobBtn from "./ApplyJobBtn";
+import { JobWithCompanyWithOwner } from "@/types";
 
 export default function ApplyDeleteBtn({
   applied,
@@ -11,15 +11,22 @@ export default function ApplyDeleteBtn({
   job: JobWithCompanyWithOwner;
 }) {
   const [hasApplied, setHasApplied] = useState(applied);
-  function handleDelete(){
-
+  function handleDelete() {
+    console.log("delete called");
   }
   return (
     <div>
       {!hasApplied ? (
-        <ApplyJobBtn setHasApplied={setHasApplied} job={job} />
+        <ApplyJobBtn
+          hasApplied={hasApplied}
+          setHasApplied={setHasApplied}
+          job={job}
+        />
       ) : (
-        <button className="bg-gray-300 cursor-not-allowed text-white font-medium px-4 py-2 rounded-md">
+        <button
+          onClick={handleDelete}
+          className="bg-gray-300 cursor-not-allowed text-white font-medium px-4 py-2 rounded-md"
+        >
           Delete Application
         </button>
       )}

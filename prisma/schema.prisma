@@ -61,7 +61,7 @@ model Job {
   job_salary      Float
   employment_type String
   job_location    String
-  company_id      String        @db.ObjectId
+  company_id      String       @db.ObjectId
   company         Company       @relation(fields: [company_id], references: [id])
   Application     Application[]
 }

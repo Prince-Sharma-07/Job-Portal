@@ -1,5 +1,3 @@
-// //@ts-nocheck
-
 // export const searchedJobs = [
 //   {
 //       "job_id": "hpyA_5f2KAErFsx0AAAAAA==",

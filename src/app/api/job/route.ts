@@ -1,4 +1,3 @@
-//@ts-nocheck
 import getCurrUser from "@/helper";
 import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
@@ -13,7 +12,7 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    const job = await prismaClient.Job.create({
+    const job = await prismaClient.job.create({
       data: dataToSave,
     });
     return NextResponse.json({
@@ -21,7 +20,7 @@ export async function POST(req: NextRequest) {
       message: "Job Added Successfully!",
       data: job,
     });
-  } catch (err) {
+  } catch (err: any) {
     return NextResponse.json({
       success: false,
       message: err.message,
@@ -30,16 +29,14 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
-  const url = req.url; //<---  http://localhost:3000/search?q=Prince&&jobType=Full-Time
+  const url = req.url;
   const urlObj = new URL(url);
   const query = urlObj.searchParams.get("q") || "";
   const jobType = urlObj.searchParams.get("jt") || "";
   const empType = urlObj.searchParams.get("et") || "";
-  const salary = urlObj.searchParams.get("sr")
-    ? parseFloat(urlObj.searchParams.get("sr"))
-    : 0;
+  const salary = urlObj.searchParams.get("sr") || "";
 
-  const where = {
+  const where: any = {
     OR: [
       {
         job_title: {
@@ -56,9 +53,6 @@ export async function GET(req: NextRequest) {
         },
       },
     ],
-    job_salary: {
-      gte: salary,
-    },
   };
 
   if (jobType) {
@@ -66,6 +60,12 @@ export async function GET(req: NextRequest) {
   }
   if (empType) {
     where.employment_type = empType;
+  }
+
+  if (salary) {
+    where.job_salary = {
+      gte: parseFloat(salary),
+    };
   }
 
   try {
@@ -83,7 +83,7 @@ export async function GET(req: NextRequest) {
       success: true,
       data: jobs,
     });
-  } catch (err) {
+  } catch (err: any) {
     return NextResponse.json({
       success: false,
       message: err.message,
