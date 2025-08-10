@@ -1,18 +1,19 @@
 import JobCard from "@/components/cards/JobCard";
-import { BriefcaseBusiness } from "lucide-react";
-import { Company, Job } from "../../../../generated/prisma";
+import { BriefcaseBusiness, Funnel } from "lucide-react";
+import { Job } from "../../../../generated/prisma";
+import FilterBtn from "@/components/ui/FilterBtn";
 
 type searchPageQuery = Promise<{
   q: string;
   jt: string;
   et: string;
   sr: string;
-}>
+}>;
 
 export default async function page({
-  searchParams
+  searchParams,
 }: {
-  searchParams: searchPageQuery
+  searchParams: searchPageQuery;
 }) {
   const query = (await searchParams).q || "";
   const jt = (await searchParams).jt || "";
@@ -33,19 +34,11 @@ export default async function page({
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      {query ? (
-        <div className="text-xl font-semibold">
-          Showing Results for: <span className="font-medium">"{query}"</span>
-        </div>
-      ) : (
-        <div className="text-xl font-semibold flex items-center gap-3">
-          All Jobs <BriefcaseBusiness />
-        </div>
-      )}
+    <div className="flex flex-col gap-4 max-md:px-8">
+      <FilterBtn query={query}/>
       <div className="flex flex-col gap-4 rounded-xl min-h-fit">
         {searchedJobs.length ? (
-          searchedJobs.map((job : Job ) => <JobCard key={job.id} job={job} />)
+          searchedJobs.map((job: Job) => <JobCard key={job.id} job={job} />)
         ) : (
           <div>No searched results found...</div>
         )}

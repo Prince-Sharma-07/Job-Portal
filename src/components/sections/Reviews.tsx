@@ -10,7 +10,7 @@ export default function Reviews({
   reviews,
 }: {
   company: Company;
-  reviews: Review;
+  reviews: Review[];
 }) {
   const [content, setContent] = useState("");
   const [reviewsList, setReviewsList] = useState(reviews);

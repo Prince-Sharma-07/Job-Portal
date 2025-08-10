@@ -1,9 +1,14 @@
 //@ts-nocheck
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-export default function ViewCompany({companyId}) {
+export default function ViewCompany({ companyId }) {
   return (
-    <Link href={'/company/' + companyId} className="px-2 p-1 rounded-md bg-blue-400 hover:bg-blue-500 cursor-pointer font-medium" >View Company</Link>
-  )
+    <Link
+      href={"/company/" + companyId}
+      className="w-full px-3 py-2 text-center rounded text-black bg-gray-200 hover:bg-gray-300 transition cursor-pointer"
+    >
+      View Company
+    </Link>
+  );
 }

@@ -46,7 +46,7 @@ export default function AddJob() {
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <button className="w-full px-3 py-2 rounded hover:bg-blue-500 dark:hover:bg-gray-700 transition cursor-pointer bg-blue-400">
+        <button className="w-full px-3 py-2 text-start rounded bg-gray-200 text-black transition cursor-pointer">
           Add Job
         </button>
       </Dialog.Trigger>
@@ -54,7 +54,7 @@ export default function AddJob() {
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Add Job</Dialog.Title>
         <Dialog.Description size="2" mb="4">
-          Add a Job
+          Enter details of Job
         </Dialog.Description>
 
         <Flex direction="column" gap="3">
@@ -86,7 +86,7 @@ export default function AddJob() {
               required
               value={job_type}
               onChange={(e) => setJobType(e.target.value)}
-              className="select select-info bg-transparent w-full "
+              className="select select-accent bg-transparent w-full "
             >
               <option value="" disabled>
                 Select job type
@@ -120,11 +120,11 @@ export default function AddJob() {
               required
               value={employment_type}
               onChange={(e) => setEmpType(e.target.value)}
-              className="select select-info bg-transparent w-full "
+              className="select select-accent bg-transparent w-full "
             >
               <option value="" disabled>
                 Select employment type
-              </option>
+              </option> 
               <option value="Full-Time">Full-Time</option>
               <option value="Part-Time">Part-Time</option>
               <option value="Internship">Internship</option>

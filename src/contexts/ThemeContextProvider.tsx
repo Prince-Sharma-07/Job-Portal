@@ -16,7 +16,9 @@ export default function ThemeContextProvider({
 
   return (
     <themeContext.Provider value={{ isDark, setIsDark }}>
-      <Theme appearance={isDark ? "dark" : "light"}>{children}</Theme>
+      <Theme appearance={isDark ? "dark" : "light"} accentColor="teal">
+        {children}
+      </Theme>
     </themeContext.Provider>
   );
 }

@@ -3,10 +3,11 @@ import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  console.log(req)
+  console.log(req);
   const body = await req.json();
 
   const userToCreate = {
+    name: body.name,
     email: body.email,
     password: body.password,
   };
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
     //   },
     //   { status: 200 }
     // );  200 sab ok hai , 300 site temporarily ya permanently khi or redirect ya move kr di gye h , 404 not found ,401unauthorized, 403 not allowed, 500 some problem in server
-  } catch (err : any) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         success: false,

@@ -25,7 +25,7 @@ export default function SearchBar() {
         onChange={(e) => setQuery(e.target.value)}
         type="search"
         placeholder="Search"
-        className="outline-none border-none w-full  py-2"
+        className="outline-none border-none w-full  py-1.5"
       />
     </form>
   );

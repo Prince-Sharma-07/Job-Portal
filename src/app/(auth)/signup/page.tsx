@@ -13,13 +13,16 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 export default function SignUp() {
+  const [name , setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error , setError] =  useState({})
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const userObj = {
+      name,
       email,
       password,
     };
@@ -38,10 +41,10 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-[85vh] w-full flex items-center justify-center">
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle>Sign up to create an account</CardTitle>
+    <div className="min-h-screen w-full flex items-center justify-center">
+      <Card className="w-full max-w-sm bg-[#ebf5f4]">
+        <CardHeader className="text-center">
+          <CardTitle className="text-xl ">Sign up to create an account</CardTitle>
           <CardDescription>
             Enter your details below to login to your new account.
           </CardDescription>
@@ -49,6 +52,19 @@ export default function SignUp() {
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
+              <div className="grid gap-2">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  id="name"
+                  type="name"
+                  name="name"
+                  placeholder="eg. prince"
+                  className="bg-white"
+                  required
+                />
+              </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -58,6 +74,7 @@ export default function SignUp() {
                   type="email"
                   name="email"
                   placeholder="jobs@example.com"
+                  className="bg-white"
                   required
                 />
               </div>
@@ -71,7 +88,8 @@ export default function SignUp() {
                   id="password"
                   type="password"
                   name="password"
-                  placeholder="Atleast 8 characters long"
+                  placeholder="atleast 8 characters long"
+                  className="bg-white"
                   required
                 />
               </div>
@@ -88,10 +106,10 @@ export default function SignUp() {
                   <option value="EMPLOYER">Employer</option>
                 </select>
               </div> */}
-              <div>
-                Already a user? <Link href={"/login"}>login</Link>
+              <div className="text-sm font-medium">
+                Already a user? <Link className="text-blue-500 hover:text-blue-600" href={"/login"}>login</Link>
               </div>
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer">
                 Register
               </Button>
             </div>

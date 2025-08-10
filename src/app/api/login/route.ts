@@ -1,7 +1,5 @@
 import { createToken } from "@/services/jwt";
 import prismaClient from "@/services/prisma";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 import { User } from "../../../../generated/prisma";
 

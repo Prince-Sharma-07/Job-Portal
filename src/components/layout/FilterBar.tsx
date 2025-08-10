@@ -34,12 +34,13 @@ export default function FilterBar() {
   }
 
   return (
-    <div className="p-4 rounded-xl bg-btn-primary/10 dark:text-white min-h-[85vh] flex flex-col gap-4 items-center">
-      <div className="flex gap-2 items-center">
-        <Funnel className="h-5 w-5 text-blue-400" />
+    <div className="p-4 rounded-xl bg-[#ebf5f4] dark:text-white h-[85vh] min-h-[85vh] flex flex-col gap-4 items-center">
+     
+      <div className="flex flex-col gap-4 w-full min-h-full px-2">
+         <div className="flex gap-2 items-center">
+        <Funnel className="h-5 w-5 text-teal-600" />
         <span className="text-lg">Filter</span>
       </div>
-      <div className="flex flex-col gap-4 w-full px-2">
         <label className="flex flex-col gap-2">
           <span className="font-medium">Search by Job Title</span>
           <SearchBar />
@@ -102,7 +103,7 @@ export default function FilterBar() {
               max={1000000}
               value={salaryRange}
               onChange={(e) => setSalaryRange(e.target.value)}
-              className="range text-blue-400 "
+              className="w-full range-xs range text-teal-600"
               step={200000}
             />
             <div className="flex justify-between px-2.5 mt-2 text-xs">
@@ -116,24 +117,16 @@ export default function FilterBar() {
           </div>
         </label>
 
-        {/* <label className="flex flex-col gap-2">
-          <span className="">Years of experience</span>
-          <input
-            type="text"
-            placeholder="Select years of experience"
-            className="input input-info bg-white dark:bg-transparent"
-          />
-        </label> */}
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-auto">
           <button
             onClick={handleApply}
-            className="text-blue-500 hover:text-blue-600 cursor-pointer text-end"
+            className="bg-teal-600 hover:bg-teal-700 cursor-pointer px-2 py-1 rounded-md text-white font-medium text-sm"
           >
             Apply
           </button>
           <button
             onClick={handleClear}
-            className="text-blue-500 hover:text-blue-600 cursor-pointer text-end"
+            className="bg-teal-600 hover:bg-teal-700 cursor-pointer px-2 py-1 rounded-md text-white font-medium text-sm"
           >
             Clear all
           </button>

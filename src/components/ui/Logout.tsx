@@ -15,6 +15,6 @@ async function logout() {
 
 export default function Logout() {
   return (
-    <button onClick={logout} className="w-full cursor-pointer px-3 py-2  rounded bg-red-400 hover:bg-red-500 text-white transition flex justify-center gap-2">Logout <LogOutIcon/></button>
+    <button onClick={logout} className="w-full cursor-pointer px-3 py-2 rounded hover:text-black hover:bg-gray-200 transition flex gap-2"><LogOutIcon/> Logout</button>
   );
 }

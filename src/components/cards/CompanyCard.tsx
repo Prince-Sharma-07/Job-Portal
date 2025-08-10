@@ -1,8 +1,15 @@
 import { CompanyWithJobs } from "@/types";
+import { Avatar } from "@radix-ui/themes";
 
 export default function CompanyCard({ company } : CompanyWithJobs) {
   return (
-      <div className=" flex flex-col gap-4 items-center justify-between bg-white shadow-2xl max-w-[375px] w-[306px] h-[360px] rounded-2xl p-4 py-10">
+      <div className="flex flex-col gap-4 items-center justify-around shadow-card bg-white max-w-[375px] w-[306px] rounded-2xl p-4 py-6">
+        <Avatar
+            className="cursor-pointer"
+            radius="medium"
+            size={'6'}
+            fallback={company?.companyName[0].toUpperCase() || ""}
+          />
         <h1 className="text-2xl font-semibold text-center">
           {company?.companyName}
         </h1>

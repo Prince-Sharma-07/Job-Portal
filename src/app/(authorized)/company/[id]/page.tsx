@@ -1,19 +1,22 @@
-//@ts-nocheck
 import CompanyDetailsCard from "@/components/cards/CompanyDetailsCard";
 import JobCard from "@/components/cards/JobCard";
 import Reviews from "@/components/sections/Reviews";
 import DeleteCompanyBtn from "@/components/ui/DeleteCompanyBtn";
-import { Box, Tabs, Text, TextArea } from "@radix-ui/themes";
+import { CompanyWithJobsAndOwnerWithReview } from "@/types";
+import { Box, Tabs } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 
-export default async function page({ params }: { params: { id: string } }) {
-  const id = params.id;
+type Param = Promise<{
+  id : string
+}>
+export default async function page({ params }: { params: Param }) {
+  const {id} = await params;
   if (!id) {
     notFound();
   }
   const res = await fetch("http://localhost:3000/api/company/" + id);
   const data = await res.json();
-  const company = data.data;
+  const company : CompanyWithJobsAndOwnerWithReview  = data.data
   if (!company) {
     notFound();
   }
@@ -23,11 +26,11 @@ export default async function page({ params }: { params: { id: string } }) {
       {/* {JSON.stringify(company)} */}
       <CompanyDetailsCard company={company} />
 
-      <DeleteCompanyBtn id={company?.id} company={company}/>
+      <DeleteCompanyBtn id={company?.id} company={company} />
 
-      <Tabs.Root defaultValue="account" className="w-full">
+      <Tabs.Root defaultValue="openings" className="w-full">
         <Tabs.List>
-          <Tabs.Trigger value="openings">Job Openings</Tabs.Trigger>
+          <Tabs.Trigger value="openings"  >Jobs</Tabs.Trigger>
           <Tabs.Trigger value="reviews">Reviews</Tabs.Trigger>
         </Tabs.List>
 
@@ -35,13 +38,13 @@ export default async function page({ params }: { params: { id: string } }) {
           <Tabs.Content value="openings">
             <div className="flex flex-col gap-4">
               <h2 className="text-2xl font-medium">Recent Openings </h2>
-              {company.jobs.map((job : {job : {company : Com}}) => (
+              {company.jobs.map((job) => (
                 <JobCard key={job.id} job={job} />
               ))}
             </div>
           </Tabs.Content>
 
-          <Reviews company={company} reviews={company.owner.review}/>
+          <Reviews company={company} reviews={company.owner.review} />
         </Box>
       </Tabs.Root>
     </div>

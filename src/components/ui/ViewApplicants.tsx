@@ -32,6 +32,16 @@ export default function ViewApplicants({ job }: JobWithCompany) {
     getApplicants();
   }, []);
 
+  async function handleDelete( id : string){
+    try{
+      const res = await fetch('http://localhost:3000/api/applicants/' + id);
+      const data = await res.json();
+      alert(data.message)
+    }catch(err){
+      alert("something went wrong")
+    }
+  }
+
   if (userData?.company?.id === job.company.id) {
     return null;
   }
@@ -55,6 +65,7 @@ export default function ViewApplicants({ job }: JobWithCompany) {
           {applicants?.map((app: Application) => (
             <Card key={app.id}>
               <Badge>{app.user_id}</Badge>
+              <button onClick={handleDelete} className="px-2 p-1 rounded-md">Delete</button>
             </Card>
           ))}
         </Flex>

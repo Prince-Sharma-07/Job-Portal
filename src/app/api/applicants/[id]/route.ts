@@ -27,3 +27,26 @@ export async function GET(
     });
   }
 }
+
+export async function DELETE(req: NextRequest, { params }) {
+  const id = params.id;
+  try {
+    const res = await prismaClient.application.delete({
+      where: {
+        id: id,
+      },
+    });
+    return sendCustomResp(true, {
+      message: "Application deleted successfully",
+    });
+  } catch (err) {
+    return sendCustomResp(false, { message: "Something Went wrong" });
+  }
+}
+
+function sendCustomResp(success: boolean, data: any) {
+  return NextResponse.json({
+    success,
+    data,
+  });
+}

@@ -11,8 +11,9 @@ export default async function Companies() {
   });
 
   return (
-    <div className="pt-25 min-h-screen px-10">
-      <div className="grid grid-cols-4 place-items-center gap-4">
+    <div className="pt-22 min-h-screen px-10 flex flex-col gap-12 items-center w-full">
+      <h2 className="text-4xl font-bold">Top Companies</h2>
+      <div className="grid grid-cols-4 place-items-center gap-8">
         {companies.length ? (
           companies.map((company) => (
             <Link key={company.id} href={"/company/" + company.id}>

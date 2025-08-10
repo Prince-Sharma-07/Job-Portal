@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { FormEvent } from "react";
 
@@ -20,7 +21,6 @@ export default function AddCompany() {
     const companyObj = {
       name: target.Name.value,
       description: target.description.value,
-      // role: e.target.role.value,
     };
     console.log(companyObj);
     const res = await fetch("http://localhost:3000/api/company", {
@@ -36,70 +36,49 @@ export default function AddCompany() {
   }
 
   return (
-    <div className="min-h-[85vh] w-full flex items-center justify-center">
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle>Create your company</CardTitle>
+    <div className="min-h-screen w-full flex items-center justify-center">
+      <Card className="w-full max-w-sm bg-[#ebf5f4]">
+        <CardHeader className="text-center">
+          <CardTitle className="text-xl ">Create your company</CardTitle>
           <CardDescription>Enter details of the company</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleCreateCompany}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">Company name</Label>
                 <Input
                   id="name"
                   type="text"
                   name="Name"
                   placeholder="Company name"
+                  className="bg-white"
                   required
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="description">Description</Label>
-                  {/* <a
-                  href="#"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Forgot your password?
-                </a> */}
                 </div>
                 <Input
                   id="description"
                   type="text"
                   name="description"
                   placeholder="Company description"
+                  className="bg-white"
                   required
                 />
               </div>
-              {/* <div className="grid gap-2">
-                <Label htmlFor="role">Role</Label>
-                <select
-                  name="role"
-                  id="role"
-                  className="border rounded-md p-1.5 text-sm"
-                  required
-                >
-                  <option value="">Select role</option>
-                  <option value="EMPLOYEE">Employee</option>
-                  <option value="EMPLOYER">Employer</option>
-                </select>
-              </div> */}
-              <Button type="submit" className="w-full">
+
+              <Button
+                type="submit"
+                className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer"
+              >
                 Create Company
               </Button>
             </div>
           </form>
         </CardContent>
-        {/* <CardFooter className="flex-col gap-2">
-          <Button type="submit" className="w-full">
-            Login
-          </Button>
-          <Button variant="outline" className="w-full">
-          Login with Google
-        </Button>
-        </CardFooter> */}
       </Card>
     </div>
   );

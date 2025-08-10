@@ -4,7 +4,13 @@ import Link from "next/link";
 import ApplyJobBtn from "../ui/ApplyJobBtn";
 import BookmarkBtn from "../ui/BookmarkBtn";
 
-export default function JobDetailCard({ job } : JobWithCompanyWithOwner) {
+export default function JobDetailCard({
+  job,
+  applied,
+}: {
+  job: JobWithCompanyWithOwner;
+  applied: boolean;
+}) {
   return (
     <div className="flex flex-col gap-4 p-10 justify-between bg-white/10 dark:text-white rounded-xl w-full ">
       <div className="flex flex-col gap-4">
@@ -23,7 +29,7 @@ export default function JobDetailCard({ job } : JobWithCompanyWithOwner) {
             >
               {job?.company?.companyName}
             </Link>
-            <span>owner: {job?.company?.owner?.email}</span> 
+            <span>owner: {job?.company?.owner?.email}</span>
           </div>
         </h1>
       </div>
@@ -46,7 +52,7 @@ export default function JobDetailCard({ job } : JobWithCompanyWithOwner) {
             <span>{job?.job_location}</span>
           </span>
         </div>
-        <ApplyJobBtn job={job}/>
+        
       </div>
     </div>
   );

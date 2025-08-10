@@ -26,10 +26,10 @@ export default function DeleteCompanyBtn({
     <>
       {userData?.id === company.companyOwnerId ? (
         <button
-          className="flex items-center gap-2 px-2 p-1 bg-btn-primary hover:bg-btn-hover w-fit rounded-md cursor-pointer font-medium"
+          className="flex items-center gap-2 px-2 p-1 bg-teal-600 text-white w-fit rounded-md cursor-pointer font-medium"
           onClick={handleDelete}
         >
-          Delete Company <Trash />
+          Delete <Trash className="w-5 text-gray-200" />
         </button>
       ) : null}
     </>

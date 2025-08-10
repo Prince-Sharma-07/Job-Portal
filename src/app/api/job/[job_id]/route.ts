@@ -1,3 +1,4 @@
+import getCurrUser from "@/helper";
 import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -6,6 +7,8 @@ export async function GET(
   { params }: { params: { job_id: string } }
 ) {
   const id = params.job_id;
+  const user = await getCurrUser();
+
   try {
     const job = await prismaClient.job.findUnique({
       where: {
@@ -15,10 +18,15 @@ export async function GET(
         company: true,
       },
     });
-    return NextResponse.json({
-      success: true,
-      data: job,
-    });
+
+    //check if user has applied or not
+    
+    
+      return NextResponse.json({
+        success: true,
+        data: job,
+      });
+    
   } catch (err: any) {
     return NextResponse.json({
       success: false,
