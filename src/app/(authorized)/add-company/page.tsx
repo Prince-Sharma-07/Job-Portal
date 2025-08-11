@@ -24,7 +24,7 @@ export default function AddCompany() {
     };
     console.log(companyObj);
     const res = await fetch(
-      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/company`,
+      `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/company`,
       {
         method: "POST",
         body: JSON.stringify(companyObj),

@@ -6,7 +6,7 @@ export async function DELETE() {
     const cookie = await cookies();
     cookie.delete("token");
     const res = NextResponse.redirect(
-      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/`
+      `${process.env.NEXT_PUBLIC_HOST_NAME as string}/`
     );
     res.cookies.delete("token");
     return res;

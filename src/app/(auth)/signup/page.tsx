@@ -29,7 +29,7 @@ export default function SignUp() {
 
     try {
       const res = await fetch(
-        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/signup`,
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/signup`,
         {
           method: "POST",
           body: JSON.stringify(userObj),

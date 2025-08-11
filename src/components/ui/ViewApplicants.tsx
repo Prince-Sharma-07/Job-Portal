@@ -26,9 +26,7 @@ export default function ViewApplicants({ job }: { job: JobWithCompany }) {
   async function handleDelete(id: string) {
     try {
       const res = await fetch(
-        `http://${
-          process.env.NEXT_PUBLIC_HOST_NAME as string
-        }/api/applicants/` + id
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/applicants/` + id
       );
       const data = await res.json();
       alert(data.message);

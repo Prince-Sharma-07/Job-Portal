@@ -33,7 +33,7 @@ export default function AddJob() {
 
     try {
       const res = await fetch(
-        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job`,
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job`,
         {
           method: "POST",
           body: JSON.stringify(jobData),

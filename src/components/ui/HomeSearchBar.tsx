@@ -19,9 +19,7 @@ export default function HomeSearchBar() {
   useEffect(() => {
     async function getSuggestions() {
       const res = await fetch(
-        `http://${
-          process.env.NEXT_PUBLIC_HOST_NAME as string
-        }/api/get-suggestions`,
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/get-suggestions`,
         {
           method: "POST",
           body: JSON.stringify(input),

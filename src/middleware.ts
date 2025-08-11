@@ -8,11 +8,11 @@ export default function middleware(req: NextRequest) {
   if (protectedPaths.includes(pathName)) {
     if (!user) {
       return NextResponse.redirect(
-        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/login`
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/login`
       );
     } else if (pathName === "/login" || pathName === "/signup") {
       return NextResponse.redirect(
-        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/`
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/`
       );
     }
   }

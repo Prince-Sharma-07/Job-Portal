@@ -23,7 +23,7 @@ export default function UserContextProvider({
   useEffect(() => {
     async function getData() {
       const res = await fetch(
-        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/current-user`
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/current-user`
       );
       const data = await res.json();
       data.success && setUserData(data.data);
