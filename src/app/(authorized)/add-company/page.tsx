@@ -23,10 +23,13 @@ export default function AddCompany() {
       description: target.description.value,
     };
     console.log(companyObj);
-    const res = await fetch("http://localhost:3000/api/company", {
-      method: "POST",
-      body: JSON.stringify(companyObj),
-    });
+    const res = await fetch(
+      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/company`,
+      {
+        method: "POST",
+        body: JSON.stringify(companyObj),
+      }
+    );
 
     const data = await res.json();
     if (data.success) {

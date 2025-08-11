@@ -21,7 +21,9 @@ export async function POST(req: NextRequest) {
     };
 
     const token = createToken(userTokenData);
-    const res = NextResponse.redirect("http://localhost:3000");
+    const res = NextResponse.redirect(
+      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}`
+    );
     res.cookies.set("token", token); //server actions me response khud handle ho raha tha but yaha par hum khud response handle kr rhe hai isiliye cookies manually set krni pad thi hai
     return res;
     // return NextResponse.json(

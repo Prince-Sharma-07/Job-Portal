@@ -32,10 +32,13 @@ export default function AddJob() {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/api/job", {
-        method: "POST",
-        body: JSON.stringify(jobData),
-      });
+      const res = await fetch(
+        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job`,
+        {
+          method: "POST",
+          body: JSON.stringify(jobData),
+        }
+      );
       const data = await res.json();
       alert(data.message);
     } catch (err: any) {

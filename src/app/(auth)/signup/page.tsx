@@ -13,10 +13,10 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 export default function SignUp() {
-  const [name , setName] = useState<string>("");
+  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error , setError] =  useState({})
+  const [error, setError] = useState({});
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -28,10 +28,13 @@ export default function SignUp() {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/api/signup", {
-        method: "POST",
-        body: JSON.stringify(userObj),
-      });
+      const res = await fetch(
+        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/signup`,
+        {
+          method: "POST",
+          body: JSON.stringify(userObj),
+        }
+      );
       if (res.redirected) {
         window.location.href = "/";
       }
@@ -44,7 +47,9 @@ export default function SignUp() {
     <div className="min-h-screen w-full flex items-center justify-center">
       <Card className="w-full max-w-sm bg-[#ebf5f4]">
         <CardHeader className="text-center">
-          <CardTitle className="text-xl ">Sign up to create an account</CardTitle>
+          <CardTitle className="text-xl ">
+            Sign up to create an account
+          </CardTitle>
           <CardDescription>
             Enter your details below to login to your new account.
           </CardDescription>
@@ -107,9 +112,18 @@ export default function SignUp() {
                 </select>
               </div> */}
               <div className="text-sm font-medium">
-                Already a user? <Link className="text-blue-500 hover:text-blue-600" href={"/login"}>login</Link>
+                Already a user?{" "}
+                <Link
+                  className="text-blue-500 hover:text-blue-600"
+                  href={"/login"}
+                >
+                  login
+                </Link>
               </div>
-              <Button type="submit" className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer">
+              <Button
+                type="submit"
+                className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer"
+              >
                 Register
               </Button>
             </div>

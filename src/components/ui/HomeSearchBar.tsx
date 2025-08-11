@@ -18,10 +18,15 @@ export default function HomeSearchBar() {
 
   useEffect(() => {
     async function getSuggestions() {
-      const res = await fetch("http://localhost:3000/api/get-suggestions", {
-        method: "POST",
-        body: JSON.stringify(input),
-      });
+      const res = await fetch(
+        `http://${
+          process.env.NEXT_PUBLIC_HOST_NAME as string
+        }/api/get-suggestions`,
+        {
+          method: "POST",
+          body: JSON.stringify(input),
+        }
+      );
       console.log(res);
       const data = await res?.json();
       setSuggestions(data?.data);
@@ -64,7 +69,7 @@ export default function HomeSearchBar() {
           </span>
 
           <div className="max-md:flex-col max-md:gap-2 px-2 justify-center items-center md:w-[28%]">
-            <Select >
+            <Select>
               <SelectTrigger className="w-full border-none outline-none shadow-none text-[16px] text-[#000000]/50 px-0">
                 <SelectValue placeholder="Select Employment Type" />
               </SelectTrigger>
@@ -108,15 +113,17 @@ export default function HomeSearchBar() {
               onClick={(e) => e.stopPropagation()}
               className="absolute top-18 left-0 w-full flex flex-col gap-1 pb-2 bg-white rounded-b-xl z-40"
             >
-              {suggestions?.map((suggestion : {id : string , job_title : string}) => (
-                <Link
-                  href={"/jobs/" + suggestion?.id}
-                  key={suggestion?.id}
-                  className=" border-t-[1px] border-gray-100 px-5 p-2"
-                >
-                  {suggestion?.job_title}
-                </Link>
-              ))}
+              {suggestions?.map(
+                (suggestion: { id: string; job_title: string }) => (
+                  <Link
+                    href={"/jobs/" + suggestion?.id}
+                    key={suggestion?.id}
+                    className=" border-t-[1px] border-gray-100 px-5 p-2"
+                  >
+                    {suggestion?.job_title}
+                  </Link>
+                )
+              )}
             </div>
           ) : null}
         </div>

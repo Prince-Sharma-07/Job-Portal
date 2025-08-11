@@ -13,7 +13,9 @@ export default async function page({
 }) {
   const p = await params;
   const id = p.job_id;
-  const res = await fetch("http://localhost:3000/api/job/" + id);
+  const res = await fetch(
+    `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job/` + id
+  );
   const data = await res.json();
   const job = data.data;
   const user = await getCurrUser();

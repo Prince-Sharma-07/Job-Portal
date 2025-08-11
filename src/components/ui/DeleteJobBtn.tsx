@@ -1,23 +1,28 @@
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 import { Job } from "../../../generated/prisma";
 
-export default function DeleteJobBtn({ job } : {job : Job}) {
-
+export default function DeleteJobBtn({ job }: { job: Job }) {
   async function handleDelete() {
     try {
-      const res = await fetch("http://localhost:3000/api/job/" + job.id, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job/` +
+          job.id,
+        {
+          method: "DELETE",
+        }
+      );
       const data = await res.json();
       alert(data.message);
-    } catch (err : any) {
+    } catch (err: any) {
       alert(err.message);
     }
   }
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger>
-        <button className="bg-red-400 hover:bg-red-500 cursor-pointer px-4 text-sm font-medium py-2 text-nowrap rounded-sm w-25">Delete Job</button>
+        <button className="bg-red-400 hover:bg-red-500 cursor-pointer px-4 text-sm font-medium py-2 text-nowrap rounded-sm w-25">
+          Delete Job
+        </button>
       </AlertDialog.Trigger>
       <AlertDialog.Content maxWidth="450px">
         <AlertDialog.Title>Delete Job</AlertDialog.Title>

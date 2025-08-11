@@ -10,7 +10,10 @@ export default function ApplyJobBtn({
   setHasApplied: (val: boolean) => void;
 }) {
   async function handleSubmit() {
-    const res = await fetch("http://localhost:3000/api/job/apply/" + job?.id);
+    const res = await fetch(
+      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job/apply/` +
+        job?.id
+    );
     setHasApplied(!hasApplied);
   }
   return (

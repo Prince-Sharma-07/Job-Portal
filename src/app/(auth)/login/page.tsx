@@ -23,16 +23,19 @@ export default function SignIn() {
       password,
     };
     try {
-      const res = await fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        body: JSON.stringify(userObj),
-      });
+      const res = await fetch(
+        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/login`,
+        {
+          method: "POST",
+          body: JSON.stringify(userObj),
+        }
+      );
       console.log(res);
       if (res.redirected) {
         window.location.href = res.url;
       }
     } catch (err: any) {
-      // error ka type kuch bhi ho skta hai , 
+      // error ka type kuch bhi ho skta hai ,
       // agar wo throw keyword se direct throw hua h to usme message key nahi hogi,
       // else if vo instance of the Error object hai to message key available hogi.
       alert(err.message);
@@ -40,7 +43,7 @@ export default function SignIn() {
   }
 
   return (
-     <div className="min-h-screen w-full flex items-center justify-center">
+    <div className="min-h-screen w-full flex items-center justify-center">
       <Card className="w-full max-w-sm bg-[#ebf5f4]">
         <CardHeader className="text-center">
           <CardTitle className="text-xl ">Login to your account</CardTitle>
@@ -93,9 +96,18 @@ export default function SignIn() {
                 </select>
               </div> */}
               <div className="text-sm font-medium">
-                New user? <Link className="text-blue-500 hover:text-blue-600" href={"/signup"}>Register</Link>
+                New user?{" "}
+                <Link
+                  className="text-blue-500 hover:text-blue-600"
+                  href={"/signup"}
+                >
+                  Register
+                </Link>
               </div>
-              <Button type="submit" className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer">
+              <Button
+                type="submit"
+                className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer"
+              >
                 Register
               </Button>
             </div>

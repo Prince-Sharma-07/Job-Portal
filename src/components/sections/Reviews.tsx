@@ -19,10 +19,13 @@ export default function Reviews({
       content: content,
       company_id: company.id,
     };
-    const res = await fetch("http://localhost:3000/api/review", {
-      method: "POST",
-      body: JSON.stringify(review),
-    });
+    const res = await fetch(
+      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/review`,
+      {
+        method: "POST",
+        body: JSON.stringify(review),
+      }
+    );
     const data = await res.json();
     const newReview = data.data;
     setReviewsList((prev) => [newReview, ...prev]);

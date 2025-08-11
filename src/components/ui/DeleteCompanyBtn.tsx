@@ -13,9 +13,12 @@ export default function DeleteCompanyBtn({
 }) {
   const { userData } = useUserContext();
   async function handleDelete() {
-    const res = await fetch("http://localhost:3000/api/company/" + id, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/company/` + id,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await res.json();
     alert(data.message);
     redirect("/company");

@@ -7,16 +7,18 @@ import { Box, Tabs } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 
 type Param = Promise<{
-  id : string
-}>
+  id: string;
+}>;
 export default async function page({ params }: { params: Param }) {
-  const {id} = await params;
+  const { id } = await params;
   if (!id) {
     notFound();
   }
-  const res = await fetch("http://localhost:3000/api/company/" + id);
+  const res = await fetch(
+    `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/company/` + id
+  );
   const data = await res.json();
-  const company : CompanyWithJobsAndOwnerWithReview  = data.data
+  const company: CompanyWithJobsAndOwnerWithReview = data.data;
   if (!company) {
     notFound();
   }
@@ -30,7 +32,7 @@ export default async function page({ params }: { params: Param }) {
 
       <Tabs.Root defaultValue="openings" className="w-full">
         <Tabs.List>
-          <Tabs.Trigger value="openings"  >Jobs</Tabs.Trigger>
+          <Tabs.Trigger value="openings">Jobs</Tabs.Trigger>
           <Tabs.Trigger value="reviews">Reviews</Tabs.Trigger>
         </Tabs.List>
 

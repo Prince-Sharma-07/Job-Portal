@@ -24,7 +24,9 @@ export default async function page({
 
   try {
     const response = await fetch(
-      `http://localhost:3000/api/job?q=${query}&jt=${jt}&et=${et}&sr=${sr}`
+      `http://${
+        process.env.NEXT_PUBLIC_HOST_NAME as string
+      }/api/job?q=${query}&jt=${jt}&et=${et}&sr=${sr}`
     );
     const result = await response.json();
     console.log(result);
@@ -35,7 +37,7 @@ export default async function page({
 
   return (
     <div className="flex flex-col gap-4 max-md:px-8">
-      <FilterBtn query={query}/>
+      <FilterBtn query={query} />
       <div className="flex flex-col gap-4 rounded-xl min-h-fit">
         {searchedJobs.length ? (
           searchedJobs.map((job: Job) => <JobCard key={job.id} job={job} />)
