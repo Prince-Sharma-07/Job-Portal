@@ -3,7 +3,7 @@ import { LogOutIcon } from "lucide-react";
 
 async function logout() {
   const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/logout`,
+    `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/logout`,
     {
       method: "DELETE",
     }

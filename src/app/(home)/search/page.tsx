@@ -24,7 +24,7 @@ export default async function page({
 
   try {
     const response = await fetch(
-      `http://${
+      `${
         process.env.NEXT_PUBLIC_HOST_NAME as string
       }/api/job?q=${query}&jt=${jt}&et=${et}&sr=${sr}`
     );

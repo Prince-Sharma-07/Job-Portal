@@ -11,8 +11,7 @@ export default function ApplyJobBtn({
 }) {
   async function handleSubmit() {
     const res = await fetch(
-      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job/apply/` +
-        job?.id
+      `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job/apply/` + job?.id
     );
     setHasApplied(!hasApplied);
   }

@@ -5,8 +5,7 @@ export default function DeleteJobBtn({ job }: { job: Job }) {
   async function handleDelete() {
     try {
       const res = await fetch(
-        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job/` +
-          job.id,
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job/` + job.id,
         {
           method: "DELETE",
         }

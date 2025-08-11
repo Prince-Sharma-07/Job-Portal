@@ -4,7 +4,7 @@ import { JobWithCompanyWithOwner } from "@/types";
 
 export default async function RecentJobs() {
   const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/recent-jobs`
+    `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/recent-jobs`
   );
   const data = await res.json();
   const recentJobs = data.data || [];

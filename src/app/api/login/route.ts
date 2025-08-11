@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       };
       const token = createToken(userTokenData);
       const res = NextResponse.redirect(
-        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/`
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/`
       );
       res.cookies.set("token", token);
       return res;

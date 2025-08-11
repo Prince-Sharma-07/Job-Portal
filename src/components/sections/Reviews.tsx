@@ -20,7 +20,7 @@ export default function Reviews({
       company_id: company.id,
     };
     const res = await fetch(
-      `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/review`,
+      `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/review`,
       {
         method: "POST",
         body: JSON.stringify(review),

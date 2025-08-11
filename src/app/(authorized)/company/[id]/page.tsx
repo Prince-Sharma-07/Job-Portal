@@ -15,7 +15,7 @@ export default async function page({ params }: { params: Param }) {
     notFound();
   }
   const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/company/` + id
+    `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/company/` + id
   );
   const data = await res.json();
   const company: CompanyWithJobsAndOwnerWithReview = data.data;

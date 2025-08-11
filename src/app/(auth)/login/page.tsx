@@ -24,7 +24,7 @@ export default function SignIn() {
     };
     try {
       const res = await fetch(
-        `http://${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/login`,
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/login`,
         {
           method: "POST",
           body: JSON.stringify(userObj),
