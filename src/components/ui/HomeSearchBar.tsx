@@ -38,8 +38,6 @@ export default function HomeSearchBar() {
       <form
         action={"/search"}
         method="GET"
-        onFocus={() => setActive(true)}
-        onBlur={() => setTimeout(() => setActive(false), 300)}
         className={`max-md:flex-col md:flex items-center md:h-full w-full max-md:px-[20px] max-md:py-[40px] max-md:space-y-6 ${
           suggestions.length && isActive
             ? "rounded-t-xl rounded-br-xl"
@@ -55,6 +53,8 @@ export default function HomeSearchBar() {
               placeholder="Job Title or Company"
               className="md:py-3 w-full outline-none border-none rounded text-[16px] text-[#000000]/90"
               onChange={(e) => setInput(e.target.value)}
+              onFocus={() => setActive(true)}
+              onBlur={() => setTimeout(() => setActive(false), 300)}
             />
 
             <div className="md:hidden">
@@ -67,9 +67,12 @@ export default function HomeSearchBar() {
           </span>
 
           <div className="max-md:flex-col max-md:gap-2 px-2 justify-center items-center md:w-[28%]">
-            <Select>
+            <Select name="et">
               <SelectTrigger className="w-full border-none outline-none shadow-none text-[16px] text-[#000000]/50 px-0">
-                <SelectValue placeholder="Select Employment Type" />
+                <SelectValue
+                  placeholder="Select Employment Type"
+                  className="border-none outline-none "
+                />
               </SelectTrigger>
               <SelectContent className="bg-white text-black">
                 <SelectGroup>
@@ -90,14 +93,14 @@ export default function HomeSearchBar() {
           </span>
 
           <div className="max-md:flex-col max-md:gap-2 px-2 justify-center items-center md:w-[25%]">
-            <Select>
+            <Select name="jt">
               <SelectTrigger className="w-full border-none shadow-none text-[16px] text-[#000000]/50 px-0">
                 <SelectValue placeholder="Select Job Type" />
               </SelectTrigger>
               <SelectContent className="bg-white text-black">
                 <SelectGroup>
                   <SelectItem value="All">All</SelectItem>
-                  <SelectItem value="On-site">On Site</SelectItem>
+                  <SelectItem value="On site">On-Site</SelectItem>
                   <SelectItem value="Remote">Remote</SelectItem>
                 </SelectGroup>
               </SelectContent>

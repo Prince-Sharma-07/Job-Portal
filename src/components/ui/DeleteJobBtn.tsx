@@ -1,5 +1,6 @@
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 import { Job } from "../../../generated/prisma";
+import { toast } from "sonner";
 
 export default function DeleteJobBtn({ job }: { job: Job }) {
   async function handleDelete() {
@@ -11,15 +12,16 @@ export default function DeleteJobBtn({ job }: { job: Job }) {
         }
       );
       const data = await res.json();
-      alert(data.message);
+      toast(data.message);
     } catch (err: any) {
-      alert(err.message);
+      console.log(err.message);
+      toast("Something went wrong!");
     }
   }
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger>
-        <button className="bg-red-400 hover:bg-red-500 cursor-pointer px-4 text-sm font-medium py-2 text-nowrap rounded-sm w-25">
+        <button className="bg-teal-600 hover:bg-teal-700 cursor-pointer px-4 text-sm font-medium py-2 text-nowrap rounded-sm w-25">
           Delete Job
         </button>
       </AlertDialog.Trigger>

@@ -49,6 +49,7 @@ export default function SignIn() {
           <CardTitle className="text-xl ">Login to your account</CardTitle>
           <CardDescription>
             Enter your details below to login to your account
+            <div>For guest login use: <br/><strong>Email:</strong> guest@job.com  <strong>Password:</strong> 12345678</div>
           </CardDescription>
         </CardHeader>
         <CardContent>

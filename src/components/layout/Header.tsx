@@ -6,10 +6,10 @@ import ProfileDropdown from "../ui/ProfileDropDown";
 import SideBar from "./SideBar";
 
 export default function Header() {
-  const { userData } = useUserContext() ;
+  const { userData } = useUserContext();
 
   return (
-    <div className="fixed top-0 flex gap-4 h-16 justify-between w-full items-center z-50 px-5  lg:px-16 xl:px-20 text-white bg-black/90 backdrop-blur-md">
+    <div className="fixed top-0 flex gap-4 h-16 justify-between w-[99vw] items-center z-50 px-5  lg:px-16 xl:px-20 text-white bg-black/90 backdrop-blur-md">
       <SideBar userData={userData} />
 
       <Link
@@ -22,7 +22,7 @@ export default function Header() {
 
       <nav className="flex gap-8 items-center text-[#a0a1a1] text-[16px] justify-center h-full max-md:hidden">
         <Link href={"/"} className="hover:text-white curser-pointer">
-          Home 
+          Home
         </Link>
         <Link href={"/search"} className="hover:text-white curser-pointer">
           Jobs

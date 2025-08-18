@@ -44,8 +44,8 @@ export default async function page({
           Job Description
         </h3>
         <p>{job.job_description}</p>
-        <EditDeleteJob job={job} />
       </div>
+      <EditDeleteJob job={job} />
     </div>
   );
 }

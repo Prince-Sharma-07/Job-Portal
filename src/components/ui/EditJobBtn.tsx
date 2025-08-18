@@ -1,4 +1,5 @@
 "use client";
+import { JobWithCompany } from "@/types";
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { useState } from "react";
 
@@ -11,16 +12,16 @@ type addJob = {
   job_location: string;
 };
 
-export default function EditJobBtn() {
-  const [job_title, setTitle] = useState<string>("");
-  const [job_type, setJobType] = useState<string>("");
-  const [job_description, setDescription] = useState<string>("");
-  const [job_salary, setSalary] = useState("");
-  const [employment_type, setEmpType] = useState<string>("");
-  const [job_location, setLocation] = useState<string>("");
+export default function EditJobBtn({ job } : {job : JobWithCompany}) {
+  const [job_title, setTitle] = useState<string>(job.job_title);
+  const [job_type, setJobType] = useState<string>(job.job_type);
+  const [job_description, setDescription] = useState<string>(job.job_description);
+  const [job_salary, setSalary] = useState(job.job_salary);
+  const [employment_type, setEmpType] = useState<string>(job.employment_type);
+  const [job_location, setLocation] = useState<string>(job.job_location);
 
   async function handleAddJob() {
-    const parsedSalary = parseFloat(job_salary) || 0;
+    const parsedSalary = job_salary || 0;
     const jobData: addJob = {
       job_title,
       job_type,
@@ -47,7 +48,7 @@ export default function EditJobBtn() {
     setTitle("");
     setJobType("");
     setDescription("");
-    setSalary("");
+    setSalary(0);
     setEmpType("");
     setLocation("");
   }
@@ -112,7 +113,7 @@ export default function EditJobBtn() {
               type="number"
               min="0"
               value={job_salary}
-              onChange={(e) => setSalary(e.target.value)}
+              onChange={(e) => setSalary(parseFloat(e.target.value))}
               placeholder="Enter salary"
             />
           </label>

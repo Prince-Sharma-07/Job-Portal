@@ -11,7 +11,7 @@ export default function EditDeleteJob({ job } : {job : JobWithCompany}) {
     <div>
       {userData?.company?.id === job?.company?.id ? (
         <div className="flex gap-4 justify-center">
-          <EditJobBtn />
+          <EditJobBtn job={job}/>
           <DeleteJobBtn job={job} />
         </div>
       ) : null}

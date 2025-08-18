@@ -22,10 +22,10 @@ export default async function page() {
   return (
     <div className="flex flex-col items-center gap-5 min-h-screen pt-20 w-full px-10">
       <h1 className="text-3xl font-bold ">Your Applications</h1>
-      <div className="w-full">
-        {applications.map((application) => (
+      <div className="w-full text-center">
+        {applications.length ? applications.map((application) => (
           <JobCard key={application.id} job={application.job} />
-        ))}
+        )) : <div>No applications are there...</div>}
       </div>
     </div>
   );

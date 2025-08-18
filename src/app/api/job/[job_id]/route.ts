@@ -45,7 +45,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Param }) {
     });
     return NextResponse.json({
       success: true,
-      message: "User deleted successfully",
+      message: "Job deleted successfully",
     });
   } catch (err: any) {
     return NextResponse.json({
