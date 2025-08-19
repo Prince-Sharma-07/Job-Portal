@@ -1,13 +1,20 @@
-"use client"
+"use client";
+
+import { useUserContext } from "@/contexts/UserContextProvider";
+import { redirect } from "next/navigation";
 
 export default function ContactPage() {
+  const { userData } = useUserContext();
+  if (!userData) redirect("/login");
   return (
     <div className="min-h-screen">
       {/* Header */}
       <header className="bg-black/90 pt-15">
         {/* Hero Section */}
         <div className="text-center py-12 sm:py-16 px-4">
-          <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold">Contact Us</h1>
+          <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold">
+            Contact Us
+          </h1>
         </div>
       </header>
 
@@ -20,7 +27,9 @@ export default function ContactPage() {
               You Will Grow, You Will Succeed. We Promise That
             </h2>
             <p className="text-gray-600 dark:text-gray-500 mb-8 text-sm sm:text-base leading-relaxed">
-              We are here to help you with your career journey. Whether you are a job seeker, student, or employer, feel free to reach out to us with your queries.
+              We are here to help you with your career journey. Whether you are
+              a job seeker, student, or employer, feel free to reach out to us
+              with your queries.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 ">
@@ -43,7 +52,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-base font-bold text-gray-900 dark:text-gray-500 mb-2">Call for inquiry</h3>
+                <h3 className="text-base font-bold text-gray-900 dark:text-gray-500 mb-2">
+                  Call for inquiry
+                </h3>
                 <a
                   href="tel:+2573886895"
                   className="text-teal-600 hover:text-teal-700 text-sm font-medium transition-colors"
@@ -71,7 +82,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-base font-bold text-gray-900 dark:text-gray-500 mb-2">Send us email</h3>
+                <h3 className="text-base font-bold text-gray-900 dark:text-gray-500 mb-2">
+                  Send us email
+                </h3>
                 <a
                   href="mailto:kramulous@sbcglobal.net"
                   className="text-teal-600 hover:text-teal-700 text-sm font-medium transition-colors break-all"
@@ -99,8 +112,12 @@ export default function ContactPage() {
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-base font-bold text-gray-900 mb-2 dark:text-gray-500">Opening hours</h3>
-                <p className="text-gray-700 text-sm font-medium">Mon - Sat: 10AM - 10PM</p>
+                <h3 className="text-base font-bold text-gray-900 mb-2 dark:text-gray-500">
+                  Opening hours
+                </h3>
+                <p className="text-gray-700 text-sm font-medium">
+                  Mon - Sat: 10AM - 10PM
+                </p>
               </div>
 
               {/* Office */}
@@ -128,21 +145,31 @@ export default function ContactPage() {
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-base font-bold text-gray-900 dark:text-gray-500 mb-2">Office</h3>
-                <p className="text-gray-700 text-sm font-medium">Explorin Academy, Dehradun, IN</p>
+                <h3 className="text-base font-bold text-gray-900 dark:text-gray-500 mb-2">
+                  Office
+                </h3>
+                <p className="text-gray-700 text-sm font-medium">
+                  Explorin Academy, Dehradun, IN
+                </p>
               </div>
             </div>
           </div>
 
           {/* Right Column - Contact Form */}
           <div className="bg-white dark:bg-white/5 dark:text-white shadow-sm border border-gray-200 p-6 sm:p-8 rounded-xl">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Contact Info</h3>
-            <p className="text-gray-500 mb-6 text-sm">Enter your details below for furthur Inquiry.</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Contact Info
+            </h3>
+            <p className="text-gray-500 mb-6 text-sm">
+              Enter your details below for furthur Inquiry.
+            </p>
 
             <form className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm">First Name</label>
+                  <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm">
+                    First Name
+                  </label>
                   <input
                     type="text"
                     placeholder="Your name"
@@ -150,7 +177,9 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm">Last Name</label>
+                  <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm">
+                    Last Name
+                  </label>
                   <input
                     type="text"
                     placeholder="Your last name"
@@ -160,7 +189,9 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm">Email Address</label>
+                <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm">
+                  Email Address
+                </label>
                 <input
                   type="email"
                   placeholder="Your E-mail address"
@@ -169,7 +200,9 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm">Message</label>
+                <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2 text-sm">
+                  Message
+                </label>
                 <textarea
                   rows={5}
                   placeholder="Your message..."
@@ -188,5 +221,5 @@ export default function ContactPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }
