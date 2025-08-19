@@ -1,6 +1,7 @@
 "use client";
 import { JobWithCompany } from "@/types";
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
+import { Edit, Edit2Icon } from "lucide-react";
 import { useState } from "react";
 
 type addJob = {
@@ -56,8 +57,8 @@ export default function EditJobBtn({ job } : {job : JobWithCompany}) {
   return (
     <Dialog.Root>
       <Dialog.Trigger>
-        <button className="w-25 px-2 text-sm font-medium rounded bg-btn-primary hover:bg-btn-hover dark:hover:bg-gray-700 transition cursor-pointer ">
-          Edit Job
+        <button className="w-20 text-white flex gap-2 items-center justify-center px-2 text-sm font-medium rounded bg-btn-primary hover:bg-btn-hover dark:hover:bg-gray-700 transition cursor-pointer ">
+          <Edit className="h-4 w-4"/> Edit
         </button>
       </Dialog.Trigger>
 

@@ -5,9 +5,9 @@ import { ReactNode } from "react";
 
 export default function layout({ children } : {children : ReactNode}) {
   return (
-    <div className="w-full flex py-8 md:px-3 lg:px-6 justify-between dark:bg-gray-900">
+    <div className="w-full flex py-8 md:px-3 lg:px-6 justify-between">
       {/* Left Sidebar - Sticky */}
-      <div className="max-md:hidden md:w-[30%] lg:w-[26%] xl:w-[22%] h-fit sticky top-18 mt-14">
+      <div className="max-md:hidden md:w-[30%] lg:w-[26%] xl:w-[22%] h-fit sticky top-18 mt-14 ">
         <FilterBar />
       </div>
 

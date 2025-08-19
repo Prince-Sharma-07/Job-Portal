@@ -21,6 +21,7 @@ export default function SavedJobsProvider({ children }) {
       alert("job is already saved");
     } else {
       setSaved((prev) => [...prev, job]);
+      alert("Job Saved Successfully!")
     }
   }
 

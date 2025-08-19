@@ -1,6 +1,7 @@
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 import { Job } from "../../../generated/prisma";
 import { toast } from "sonner";
+import { Trash } from "lucide-react";
 
 export default function DeleteJobBtn({ job }: { job: Job }) {
   async function handleDelete() {
@@ -21,8 +22,8 @@ export default function DeleteJobBtn({ job }: { job: Job }) {
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger>
-        <button className="bg-teal-600 hover:bg-teal-700 cursor-pointer px-4 text-sm font-medium py-2 text-nowrap rounded-sm w-25">
-          Delete Job
+        <button className="text-white w-25 justify-center flex gap-2 items-center bg-teal-600 hover:bg-teal-700 cursor-pointer px-4 text-sm font-medium py-2 text-nowrap rounded-sm">
+          <Trash className="h-4 w-4"/>Delete
         </button>
       </AlertDialog.Trigger>
       <AlertDialog.Content maxWidth="450px">

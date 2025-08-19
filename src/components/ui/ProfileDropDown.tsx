@@ -36,7 +36,7 @@ export default function ProfileDropdown() {
 
         <DropdownMenu.Item asChild>
           <Link
-            className="w-full flex items-center gap-2 px-3 py-2 focus-within:outline-none hover:text-black rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition cursor-pointer"
+            className="w-full flex items-center gap-2 px-3 py-2 focus-within:outline-none hover:text-black rounded hover:bg-gray-200  transition cursor-pointer"
             href={"/profile"}
           >
           <UserIcon className="h-6 w-6"/>  Profile 
@@ -49,7 +49,7 @@ export default function ProfileDropdown() {
 
         <DropdownMenu.Item asChild>
           <Link
-            className="w-full flex items-center gap-2 px-3  py-2 focus-within:outline-none hover:text-black rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition cursor-pointer"
+            className="w-full flex items-center gap-2 px-3  py-2 focus-within:outline-none hover:text-black rounded hover:bg-gray-200  transition cursor-pointer"
             href={"/applied-jobs"}
           >
           <SquareMousePointer className="h-5 w-5"/>  Applied Jobs 

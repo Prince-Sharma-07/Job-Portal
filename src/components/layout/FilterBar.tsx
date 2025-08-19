@@ -34,7 +34,7 @@ export default function FilterBar() {
   }
 
   return (
-    <div className="p-4 rounded-xl bg-[#ebf5f4] dark:text-black h-[85vh] min-h-[85vh] flex flex-col gap-4 items-center">
+    <div className="p-4 rounded-xl bg-[#ebf5f4] dark:bg-white/10 dark:text-white text-black h-[85vh] min-h-[85vh] flex flex-col gap-4 items-center">
      
       <div className="flex flex-col gap-4 w-full min-h-full px-2">
          <div className="flex gap-2 items-center">

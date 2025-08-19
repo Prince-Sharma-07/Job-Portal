@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProfileDropdown from "../ui/ProfileDropDown";
 import SideBar from "./SideBar";
+import Modebtn from "../ui/mode-btn";
 
 export default function Header() {
   const { userData } = useUserContext();
@@ -35,7 +36,10 @@ export default function Header() {
         </Link>
       </nav>
 
+    
+
       <div className="flex gap-4 items-center">
+        <span className="max-md:hidden"><Modebtn /></span>
         {userData ? (
           <div className="flex gap-3 items-center ">
             <span className="font-medium">Hi, {userData.name}</span>

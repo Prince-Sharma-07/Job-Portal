@@ -8,7 +8,7 @@ export default function EditDeleteJob({ job } : {job : JobWithCompany}) {
   const { userData } = useUserContext();
 
   return (
-    <div>
+    <div className="place-self-end">
       {userData?.company?.id === job?.company?.id ? (
         <div className="flex gap-4 justify-center">
           <EditJobBtn job={job}/>

@@ -17,7 +17,7 @@ export async function GET(req: NextRequest, { params }: { params: Param }) {
         // true hona tha yaha pr hi but password bhi omit krna hai isiliye esa kiya...
         owner: {
           include: {
-            review: true,
+            reviews: true,
           },
           omit: {
             password: true,

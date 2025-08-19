@@ -1,5 +1,5 @@
 "use client";
-import { UserWithCompany } from "@/types";
+import { UserWithCompany, UserWithCompanyWithReviewsWithApplications } from "@/types";
 import {
   createContext,
   ReactNode,
@@ -9,8 +9,8 @@ import {
 } from "react";
 
 const userContext = createContext<{
-  userData?: UserWithCompany;
-  setUserData?: (value: UserWithCompany) => void;
+  userData?: UserWithCompanyWithReviewsWithApplications;
+  setUserData?: (value: UserWithCompanyWithReviewsWithApplications) => void;
 }>({});
 
 export default function UserContextProvider({
@@ -18,7 +18,7 @@ export default function UserContextProvider({
 }: {
   children: ReactNode;
 }) {
-  const [userData, setUserData] = useState<UserWithCompany>();
+  const [userData, setUserData] = useState<UserWithCompanyWithReviewsWithApplications>();
 
   useEffect(() => {
     async function getData() {

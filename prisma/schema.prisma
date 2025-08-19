@@ -33,14 +33,14 @@ datasource db {
 // }
 
 model User {
-  id          String        @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  email       String        @unique
-  password    String
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  email        String        @unique
+  password     String
   // role        Role?         @default(EMPLOYEE)
-  company     Company? //user hamesha hoga but ho sakta hai uski company na ho
-  review      Review[]
-  Application Application[]
+  company      Company? //user hamesha hoga but ho sakta hai uski company na ho
+  reviews      Review[]
+  applications Application[]
 }
 
 model Company {
@@ -61,7 +61,7 @@ model Job {
   job_salary      Float
   employment_type String
   job_location    String
-  company_id      String       @db.ObjectId
+  company_id      String        @db.ObjectId
   company         Company       @relation(fields: [company_id], references: [id])
   Application     Application[]
 }

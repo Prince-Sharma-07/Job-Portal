@@ -35,15 +35,15 @@ export async function DELETE(req: NextRequest, { params }: { params: Param }) {
 
   try {
     const res = await prismaClient.application.delete({
-      where: {
-        id: id,
-      },
+      where : {
+        id : id
+      }
     });
     return sendCustomResp(true, {
       message: "Application deleted successfully",
     });
-  } catch (err) {
-    return sendCustomResp(false, { message: "Something Went wrong" });
+  } catch (err : any) {
+    return sendCustomResp(false, { message: err.message});
   }
 }
 

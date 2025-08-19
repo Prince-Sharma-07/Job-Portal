@@ -15,7 +15,7 @@
 //       <div className="drawer-side">
 //         <label
 //           htmlFor="my-drawer"
-//           aria-label="close sidebar"  
+//           aria-label="close sidebar"
 //           className="drawer-overlay"
 //         ></label>
 //         <ul className="menu bg-gray-950 text-base-content min-h-full w-80">
@@ -67,11 +67,11 @@
 //   );
 // }
 
-
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { UserWithCompany } from "@/types";
 import Image from "next/image";
+import Modebtn from "../ui/mode-btn";
 
 export default function SideBar({ userData }: { userData: UserWithCompany }) {
   // Function to close drawer on link click
@@ -96,8 +96,21 @@ export default function SideBar({ userData }: { userData: UserWithCompany }) {
         ></label>
         <ul className="menu bg-gray-950 text-base-content min-h-full w-80 p-6 space-y-4">
           {/* Sidebar Heading */}
-          <h2 className="text-white text-xl font-bold mb-4 flex gap-3 items-center">
-             <Image src={"/Logo.svg"} height={28} width={28} alt="logo" className="mb-1" />JOB PORTAL</h2>
+          <div className="w-full flex items-center justify-between">
+            <h2 className="text-white text-xl font-bold flex gap-3 items-center">
+              <Image
+                src={"/Logo.svg"}
+                height={28}
+                width={28}
+                alt="logo"
+                className="mb-1"
+              />
+              JOB PORTAL
+            </h2>
+            <span>
+              <Modebtn />
+            </span>
+          </div>
 
           {/* Sidebar Links */}
           <li>
