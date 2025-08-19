@@ -13,7 +13,7 @@ export default function DeleteJobBtn({ job }: { job: Job }) {
         }
       );
       const data = await res.json();
-      toast(data.message);
+      alert(data?.message)
     } catch (err: any) {
       console.log(err.message);
       toast("Something went wrong!");

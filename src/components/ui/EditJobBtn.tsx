@@ -1,7 +1,7 @@
 "use client";
 import { JobWithCompany } from "@/types";
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
-import { Edit, Edit2Icon } from "lucide-react";
+import { Edit } from "lucide-react";
 import { useState } from "react";
 
 type addJob = {
@@ -34,7 +34,7 @@ export default function EditJobBtn({ job } : {job : JobWithCompany}) {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job`,
+        `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/job/` + job.id,
         {
           method: "POST",
           body: JSON.stringify(jobData),
@@ -63,9 +63,9 @@ export default function EditJobBtn({ job } : {job : JobWithCompany}) {
       </Dialog.Trigger>
 
       <Dialog.Content maxWidth="450px">
-        <Dialog.Title>Add Job</Dialog.Title>
+        <Dialog.Title>Edit Job</Dialog.Title>
         <Dialog.Description size="2" mb="4">
-          Add a Job
+          Edit the Job
         </Dialog.Description>
 
         <Flex direction="column" gap="3">
@@ -160,7 +160,7 @@ export default function EditJobBtn({ job } : {job : JobWithCompany}) {
             </Button>
           </Dialog.Close>
           <Dialog.Close>
-            <Button onClick={handleAddJob}>Add</Button>
+            <Button onClick={handleAddJob}>Save</Button>
           </Dialog.Close>
         </Flex>
       </Dialog.Content>

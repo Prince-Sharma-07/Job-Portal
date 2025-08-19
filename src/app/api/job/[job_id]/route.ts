@@ -9,8 +9,6 @@ type Param = Promise<{
 export async function GET(req: NextRequest, { params }: { params: Param }) {
   const { job_id } = await params;
 
-  const user = await getCurrUser();
-
   try {
     const job = await prismaClient.job.findUnique({
       where: {
