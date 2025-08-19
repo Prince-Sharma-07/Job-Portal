@@ -19,7 +19,6 @@ export default function ApplyDeleteBtn({
   const {userData} = useUserContext()
   const Application = userData?.applications.find((app)=>app.job_id == job.id)
   const ApplicationId = Application?.id
-  const router = useRouter()
 
   async function handleDelete() {
     setLoading(true);
@@ -36,7 +35,14 @@ export default function ApplyDeleteBtn({
     }
     setLoading(false)
   }
+
+  if(job.company_id == userData?.company?.id){
+    return null
+  }
+
+
   return (
+
     <div>
       {!hasApplied ? (
         <ApplyJobBtn

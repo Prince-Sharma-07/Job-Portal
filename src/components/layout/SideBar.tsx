@@ -69,11 +69,11 @@
 
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
-import { UserWithCompany } from "@/types";
+import { UserWithCompany, UserWithCompanyWithReviewsWithApplications } from "@/types";
 import Image from "next/image";
 import Modebtn from "../ui/mode-btn";
 
-export default function SideBar({ userData }: { userData: UserWithCompany }) {
+export default function SideBar({ userData }: { userData: UserWithCompanyWithReviewsWithApplications | undefined }) {
   // Function to close drawer on link click
   const handleClose = () => {
     const drawer = document.getElementById("my-drawer") as HTMLInputElement;

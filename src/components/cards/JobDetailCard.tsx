@@ -1,11 +1,8 @@
 "use client";
 import { JobWithCompanyWithOwner } from "@/types";
 import Link from "next/link";
-import BookmarkBtn from "../ui/BookmarkBtn";
-import ApplyJobBtn from "../ui/ApplyJobBtn";
 import ApplyDeleteBtn from "../ui/ApplyDeleteBtn";
-import { useState } from "react";
-import { Avatar } from "@radix-ui/react-avatar";
+import BookmarkBtn from "../ui/BookmarkBtn";
 
 export default function JobDetailCard({
   job,

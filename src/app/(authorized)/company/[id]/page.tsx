@@ -58,7 +58,7 @@
 import CompanyDetailsCard from "@/components/cards/CompanyDetailsCard";
 import JobCard from "@/components/cards/JobCard";
 import Reviews from "@/components/sections/Reviews";
-import DeleteCompanyBtn from "@/components/ui/DeleteCompanyBtn";
+import prismaClient from "@/services/prisma";
 import { CompanyWithJobsAndOwnerWithReview } from "@/types";
 import { Box, Tabs } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
@@ -75,14 +75,19 @@ export default async function page({ params }: { params: Param }) {
   const data = await res.json();
   const company: CompanyWithJobsAndOwnerWithReview = data.data;
 
+  
+
   if (!company) notFound();
+
+  const rewiews = await prismaClient.review.findMany();
+  const companyReviews = rewiews.filter((review)=>review.company_id == company.id)
 
   return (
     <div className="py-16 pt-20 min-h-screen px-4 md:px-10 flex flex-col gap-8 items-center">
       {/* Company Header */}
       <CompanyDetailsCard company={company} />
 
-      <DeleteCompanyBtn id={company.id} company={company} />
+      {/* <DeleteCompanyBtn id={company.id} company={company} /> */}
 
       {/* Tabs Section */}
       <Tabs.Root defaultValue="openings" className="w-full max-w-5xl">
@@ -122,7 +127,7 @@ export default async function page({ params }: { params: Param }) {
 
           {/* Reviews */}
           <Tabs.Content value="reviews">
-            <Reviews company={company} reviews={company.owner.reviews} />
+            <Reviews company={company} reviews={companyReviews} />
           </Tabs.Content>
         </Box>
       </Tabs.Root>

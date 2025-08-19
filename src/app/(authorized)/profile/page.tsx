@@ -1,9 +1,7 @@
 "use client";
-import JobCard from "@/components/cards/JobCard";
 import { useUserContext } from "@/contexts/UserContextProvider";
 import { Edit } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 // Mock data - replace with actual data from your database
 // const userData = {
@@ -133,7 +131,7 @@ export default function ProfilePage() {
               {/* Job Applications */}
               <div className="dark:bg-white/10 flex flex-col gap-3 rounded-xl px-6 py-3 shadow-sm border h-44 overflow-auto">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                  Job Applications ({userData?.applications.length})
+                  Jobs Applied ({userData?.applications.length})
                 </h3>
                 <div className="flex flex-col gap-3">
                   {userData?.applications.map((application) => (
