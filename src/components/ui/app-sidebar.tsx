@@ -10,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import FilterBar from "../layout/FilterBar";
 
 // Menu items.
 const items = [
@@ -43,12 +44,11 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarContent  className="bg-white text-black">
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
+      <SidebarContent  className="bg-[#ebf5f4] text-black">
+        <SidebarGroup className="p-0 ">
+          <SidebarGroupContent className="p-0">
+            <SidebarMenu className="p-0">
+              {/* {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
@@ -57,7 +57,8 @@ export function AppSidebar() {
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              ))}
+              ))} */}
+              <FilterBar />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
