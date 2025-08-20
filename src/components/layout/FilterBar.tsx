@@ -30,17 +30,16 @@ export default function FilterBar() {
   }
 
   function handleClear() {
-    router.push("/search?q=" + q);
+    window.location.href = "/search?q=" + q
   }
 
   return (
     <div className="p-4 rounded-xl bg-[#ebf5f4] dark:bg-white/10 dark:text-white text-black h-[85vh] min-h-[85vh] flex flex-col gap-4 items-center">
-     
       <div className="flex flex-col gap-4 w-full min-h-full px-2">
-         <div className="flex gap-2 items-center">
-        <Funnel className="h-5 w-5 text-teal-600" />
-        <span className="text-lg">Filter</span>
-      </div>
+        <div className="flex gap-2 items-center">
+          <Funnel className="h-5 w-5 text-teal-600" />
+          <span className="text-lg">Filter</span>
+        </div>
         <label className="flex flex-col gap-2">
           <span className="font-medium">Search by Job Title</span>
           <SearchBar />
@@ -125,6 +124,7 @@ export default function FilterBar() {
             Apply
           </button>
           <button
+            type="reset"
             onClick={handleClear}
             className="bg-teal-600 hover:bg-teal-700 cursor-pointer px-2 py-1 rounded-md text-white font-medium text-sm"
           >
