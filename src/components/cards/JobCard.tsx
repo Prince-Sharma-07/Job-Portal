@@ -26,7 +26,7 @@ export default function JobCard({ job }: { job: JobWithCompanyWithOwner }) {
             <span className="font-medium text-xl">{job.job_title}</span>
             <Link
               href={"/company/" + job?.company?.id}
-              className="text-sm hover:underline"
+              className="text-sm hover:underline place-self-start"
             >
               {job?.company?.companyName}
             </Link>

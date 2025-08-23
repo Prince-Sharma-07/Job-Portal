@@ -13,3 +13,4 @@ export type UserWithCompanyWithReviewsWithApplications = User & {
   reviews: Review[];
   applications: (Application & { job: Job & {company : Company} })[];
 };
+export type ReviewWithUser = Review & {user : User};

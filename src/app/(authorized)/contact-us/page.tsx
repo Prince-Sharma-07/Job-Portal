@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-black/90 pt-15">
+      <header className="bg-black pt-15">
         {/* Hero Section */}
         <div className="text-center py-12 sm:py-16 px-4">
           <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold">

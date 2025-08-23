@@ -1,16 +1,17 @@
 "use client";
-import { Tabs, TextArea } from "@radix-ui/themes";
+import { Avatar, Tabs, TextArea } from "@radix-ui/themes";
 import { SendIcon } from "lucide-react";
 import { useState } from "react";
-import { Company, Review } from "../../../generated/prisma";
+import { Company, Review, User } from "../../../generated/prisma";
 import { useUserContext } from "@/contexts/UserContextProvider";
+import { ReviewWithUser } from "@/types";
 
 export default function Reviews({
   company,
   reviews,
 }: {
   company: Company;
-  reviews: Review[];
+  reviews: ReviewWithUser[];
 }) {
   const [content, setContent] = useState("");
   const [reviewsList, setReviewsList] = useState(reviews);
@@ -29,7 +30,7 @@ export default function Reviews({
       }
     );
     const data = await res.json();
-    const newReview = data.data;
+    const newReview = data.data as ReviewWithUser;
     setReviewsList((prev) => [newReview, ...prev]);
     setContent("")
   }
@@ -58,7 +59,9 @@ export default function Reviews({
       <h2 className="text-xl font-medium">Top Reviews</h2>
       <div className="flex flex-col gap-2">
         {reviewsList.length ? reviewsList?.map((review) => (
-          <div key={review.content}>⭐ {review.content}</div>
+          <div key={review.content} className="flex gap-2 items-center">
+             <Avatar radius="full" size={"1"} fallback={review?.user?.name[0].toUpperCase()}/>
+             {review.content}</div>
         )) : <div>No reviews yet...</div>}
       </div>
       </div>

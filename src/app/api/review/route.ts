@@ -12,12 +12,12 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    await prismaClient.review.create({
+    let review = await prismaClient.review.create({
       data: reviewToSave,
     });
     return NextResponse.json({
       success: true,
-      data: reviewToSave,
+      data: review,
     });
   } catch (err: any) {
     return NextResponse.json({

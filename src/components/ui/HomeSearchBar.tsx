@@ -112,7 +112,7 @@ export default function HomeSearchBar() {
           {isActive && suggestions.length ? (
             <div
               onClick={(e) => e.stopPropagation()}
-              className="absolute top-18 left-0 w-full flex flex-col gap-1 pb-2 bg-white rounded-b-xl z-40 overflow-auto"
+              className="absolute top-18 left-0 w-full flex flex-col gap-1 pb-2 bg-white text-[#000000]/60 rounded-b-xl z-40 overflow-auto"
             >
               {suggestions?.map(
                 (suggestion: { id: string; job_title: string }) => (
