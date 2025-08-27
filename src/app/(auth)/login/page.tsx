@@ -15,9 +15,11 @@ import { FormEvent, useState } from "react";
 export default function SignIn() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState("");
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    setError("")
     const userObj = {
       email,
       password,
@@ -30,9 +32,13 @@ export default function SignIn() {
           body: JSON.stringify(userObj),
         }
       );
-      console.log(res);
       if (res.redirected) {
         window.location.href = res.url;
+      }
+      else{
+        const data = await res.json();
+        console.log("the->",data)
+        setError(data.message)
       }
     } catch (err: any) {
       // error ka type kuch bhi ho skta hai ,
@@ -49,10 +55,22 @@ export default function SignIn() {
           <CardTitle className="text-xl ">Login to your account</CardTitle>
           <CardDescription>
             Enter your details below to login to your account
-            <div>For guest login use: <br/><strong>Email:</strong> guest@job.com  <strong>Password:</strong> 12345678</div>
+            <div>
+              For guest login use: <br />
+              <strong>Email:</strong> guest@jobs.com <strong>Password:</strong>{" "}
+              12345678
+            </div>
           </CardDescription>
+          {error.length ? (
+            <CardDescription className="-mb-4">
+              <strong className="text-red-400 text-sm">{error}</strong>
+            </CardDescription>
+          ) : (
+            <></>
+          )}
         </CardHeader>
         <CardContent>
+          
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
@@ -109,7 +127,7 @@ export default function SignIn() {
                 type="submit"
                 className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer"
               >
-                Register
+                Login
               </Button>
             </div>
           </form>
