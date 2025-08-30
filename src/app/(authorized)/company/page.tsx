@@ -12,7 +12,7 @@ export default async function Companies() {
 
   return (
     <div className=" min-h-screen px-8 sm:px-9 md:px-10 lg:px-11 xl:px-12 flex flex-col gap-12 items-center w-full">
-      <header className="bg-black pt-15 w-[99vw]">
+      <header className="bg-black pt-15 w-[100vw] md:w-[99vw]">
        
         {/* Hero Section */}
         <div className="text-center py-12 md:py-16">

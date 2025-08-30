@@ -69,11 +69,18 @@
 
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
-import { UserWithCompany, UserWithCompanyWithReviewsWithApplications } from "@/types";
+import {
+  UserWithCompany,
+  UserWithCompanyWithReviewsWithApplications,
+} from "@/types";
 import Image from "next/image";
 import Modebtn from "../ui/mode-btn";
 
-export default function SideBar({ userData }: { userData: UserWithCompanyWithReviewsWithApplications | undefined }) {
+export default function SideBar({
+  userData,
+}: {
+  userData: UserWithCompanyWithReviewsWithApplications | undefined;
+}) {
   // Function to close drawer on link click
   const handleClose = () => {
     const drawer = document.getElementById("my-drawer") as HTMLInputElement;
@@ -141,23 +148,9 @@ export default function SideBar({ userData }: { userData: UserWithCompanyWithRev
             </Link>
           </li>
           <li>
-            {userData?.company ? (
-              <Link
-                href={"/company/" + userData.company.id}
-                onClick={handleClose}
-                className="text-lg px-2 py-2 rounded-md hover:bg-gray-800 hover:text-white transition"
-              >
-                View Company
-              </Link>
-            ) : (
-              <Link
-                href={"/add-company"}
-                onClick={handleClose}
-                className="text-lg px-2 py-2 rounded-md hover:bg-gray-800 hover:text-white transition"
-              >
-                Add Company
-              </Link>
-            )}
+            <Link className="text-lg px-2 py-2 rounded-md hover:bg-gray-800 hover:text-white transition" href={"/contact-us"}>
+              Contact us
+            </Link>
           </li>
         </ul>
       </div>

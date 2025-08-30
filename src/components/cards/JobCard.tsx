@@ -15,7 +15,7 @@ export default function JobCard({ job }: { job: JobWithCompanyWithOwner }) {
           <BookmarkBtn job={job} />
         </div>
 
-        <div className="max-md:flex-col flex gap-2 md:items-center">
+        <div className="max-md:flex-col max-md:items-start flex gap-2 md:items-center">
           <Avatar
             className="cursor-pointer"
             radius="medium"
