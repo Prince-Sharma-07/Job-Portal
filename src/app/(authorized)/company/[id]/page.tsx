@@ -62,7 +62,6 @@ import prismaClient from "@/services/prisma";
 import { CompanyWithJobsAndOwnerWithReview } from "@/types";
 import { Box, Tabs } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
-import { Review, User } from "../../../../../generated/prisma";
 
 type Param = Promise<{ id: string }>;
 
@@ -79,15 +78,15 @@ export default async function page({ params }: { params: Param }) {
   if (!company) notFound();
 
   const reviews = await prismaClient.review.findMany({
-    include : {
-      user : true
-    }
+    include: {
+      user: true,
+    },
   });
 
   const companyReviews = reviews.filter(
     (review) => review.company_id == company.id
   );
-  
+
   return (
     <div className="py-16 pt-20 min-h-screen px-4 md:px-10 flex flex-col gap-8 items-center">
       <CompanyDetailsCard company={company} />
@@ -97,14 +96,10 @@ export default async function page({ params }: { params: Param }) {
       <Tabs.Root defaultValue="openings" className="w-full max-w-5xl">
         <Tabs.List className="flex gap-6 border-b pb-2">
           <Tabs.Trigger value="openings">
-            <span className="text-lg font-medium data-[state=active]:text-teal-600 data-[state=active]:border-b-2 data-[state=active]:border-teal-600 pb-1">
-              Jobs
-            </span>
+            <span className="text-lg font-medium pb-1">Jobs</span>
           </Tabs.Trigger>
           <Tabs.Trigger value="reviews">
-            <span className="text-lg font-medium data-[state=active]:text-teal-600 data-[state=active]:border-b-2 data-[state=active]:border-teal-600 pb-1">
-              Reviews
-            </span>
+            <span className="text-lg font-medium pb-1">Reviews</span>
           </Tabs.Trigger>
         </Tabs.List>
 

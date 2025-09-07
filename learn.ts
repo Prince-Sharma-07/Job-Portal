@@ -3,7 +3,7 @@ let x: number | string | string[]; // we can select datatype we OR
 let y: 10 | 20 | "hi" = "hi"; // only these 3 values are allowed
 
 let arr: number[] = [1, 2, 3];
-
+ 
 let arr2: (number | string)[] = [12, 2, 3, "string"]; // this array will accept both the values number and string
 
 let tuple: [string, number, boolean] = ["string", 1, false];

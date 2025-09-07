@@ -58,6 +58,7 @@ export async function GET(req: NextRequest) {
   if (jobType) {
     where.job_type = jobType;
   }
+  
   if (empType) {
     where.employment_type = empType;
   }

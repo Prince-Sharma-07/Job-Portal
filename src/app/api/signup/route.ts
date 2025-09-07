@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const res = NextResponse.redirect(
       `${process.env.NEXT_PUBLIC_HOST_NAME as string}`
     );
-    res.cookies.set("token", token); //server actions me response khud handle ho raha tha but yaha par hum khud response handle kr rhe hai isiliye cookies manually set krni pad thi hai
+    res.cookies.set("token", token); //server actions me response khud handle ho raha tha but yaha par hum khud response handle kr rhe hai isiliye cookies manually set krni padti hai...
     return res;
     // return NextResponse.json(
     //   {

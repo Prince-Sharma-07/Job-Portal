@@ -1,10 +1,10 @@
 "use client";
+import { useUserContext } from "@/contexts/UserContextProvider";
+import { ReviewWithUser } from "@/types";
 import { Avatar, Tabs, TextArea } from "@radix-ui/themes";
 import { SendIcon } from "lucide-react";
 import { useState } from "react";
-import { Company, Review, User } from "../../../generated/prisma";
-import { useUserContext } from "@/contexts/UserContextProvider";
-import { ReviewWithUser } from "@/types";
+import { Company } from "../../../generated/prisma";
 
 export default function Reviews({
   company,
@@ -55,8 +55,8 @@ export default function Reviews({
       
       }
       
-      <div className="flex flex-col gap-3">
-      <h2 className="text-xl font-medium">Top Reviews</h2>
+      <div className="flex flex-col gap-5">
+      <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-300">Top Reviews</h2>
       <div className="flex flex-col gap-2">
         {reviewsList.length ? reviewsList?.map((review) => (
           <div key={review.content} className="flex gap-2 items-center">
