@@ -1,11 +1,5 @@
-"use client";
-
-import { useUserContext } from "@/contexts/UserContextProvider";
-import { redirect } from "next/navigation";
-
 export default function ContactPage() {
-  const { userData } = useUserContext();
-  if (!userData) redirect("/login");
+  
   return (
     <div className="min-h-screen">
       {/* Header */}

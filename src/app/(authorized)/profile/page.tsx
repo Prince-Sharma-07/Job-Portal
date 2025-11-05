@@ -1,4 +1,5 @@
 "use client";
+import EditUser from "@/components/ui/EditUser";
 import { useUserContext } from "@/contexts/UserContextProvider";
 import { Edit } from "lucide-react";
 import Link from "next/link";
@@ -28,10 +29,9 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
+      
       <header className="bg-black pt-15">
-       
-        {/* Hero Section */}
+      
         <div className="text-center py-12 md:py-16">
           <h1 className="text-white text-3xl md:text-5xl font-bold">
             My Profile
@@ -39,10 +39,10 @@ export default function ProfilePage() {
         </div>
       </header>
 
-      {/* Main Content */}
+
       <main className="px-8 py-12">
         <div className="max-w-6xl mx-auto">
-          {/* Profile Header Card */}
+   
           <div className="dark:bg-white/10 rounded-xl p-6 mb-8 shadow-sm border flex items-start md:items-center justify-between">
             <div className="flex max-md:flex-col md:items-center gap-6">
               <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center">
@@ -57,7 +57,9 @@ export default function ProfilePage() {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
                   {userData?.name}
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-1">{userData?.email}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-1">
+                  {userData?.email}
+                </p>
                 {userData?.company && (
                   <p className="text-teal-600 font-medium">
                     at {userData.company.companyName}
@@ -65,30 +67,31 @@ export default function ProfilePage() {
                 )}
               </div>
             </div>
-            
-              <button className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-2 py-1 md:px-6 md:py-2 rounded text-sm font-medium transition-colors">
-                <Edit /><span className="max-md:hidden">Edit Profile</span>
-              </button>
-            
+
+            <EditUser/>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left Column */}
+        
             <div className="space-y-8">
-              {/* Personal Information */}
+             
               <div className="dark:bg-white/10 rounded-xl p-6 shadow-sm border">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                   Personal Information
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-300 text-sm">Full Name:</span>
+                    <span className="text-gray-600 dark:text-gray-300 text-sm">
+                      Full Name:
+                    </span>
                     <span className="text-gray-900 dark:text-gray-300 text-sm font-medium">
                       {userData?.name}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-300 text-sm">Email:</span>
+                    <span className="text-gray-600 dark:text-gray-300 text-sm">
+                      Email:
+                    </span>
                     <span className="text-gray-900 dark:text-gray-300 text-sm font-medium">
                       {userData?.email}
                     </span>
@@ -96,7 +99,9 @@ export default function ProfilePage() {
                   {userData?.company && (
                     <>
                       <div className="flex justify-between">
-                        <span className="text-gray-600 dark:text-gray-300 text-sm">Company:</span>
+                        <span className="text-gray-600 dark:text-gray-300 text-sm">
+                          Company:
+                        </span>
                         <span className="text-gray-900 dark:text-gray-300 text-sm font-medium">
                           {userData.company.companyName}
                         </span>
@@ -106,7 +111,6 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              {/* Reviews Section */}
               <div className="dark:bg-white/10 flex flex-col gap-3 rounded-xl px-6 py-3 h-44 shadow-sm border overflow-auto">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                   Reviews ({userData?.reviews.length})
@@ -126,9 +130,8 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* Right Column */}
             <div>
-              {/* Job Applications */}
+          
               <div className="dark:bg-white/10 flex flex-col gap-3 rounded-xl px-6 py-3 shadow-sm border h-44 overflow-auto">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                   Jobs Applied ({userData?.applications.length})
@@ -154,7 +157,6 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              {/* Quick Stats */}
               <div className="dark:bg-white/10 rounded-xl p-6 shadow-sm border mt-8">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                   Quick Stats
@@ -164,13 +166,17 @@ export default function ProfilePage() {
                     <div className="text-2xl font-bold text-teal-600">
                       {userData?.applications.length}
                     </div>
-                    <div className="text-gray-600 dark:text-white text-sm">Applications</div>
+                    <div className="text-gray-600 dark:text-white text-sm">
+                      Applications
+                    </div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 dark:bg-white/20 rounded-lg">
                     <div className="text-2xl font-bold text-teal-600">
                       {userData?.reviews.length}
                     </div>
-                    <div className="text-gray-600 dark:text-white text-sm">Reviews</div>
+                    <div className="text-gray-600 dark:text-white text-sm">
+                      Reviews
+                    </div>
                   </div>
                 </div>
               </div>

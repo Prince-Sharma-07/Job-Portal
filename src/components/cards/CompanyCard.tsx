@@ -10,10 +10,10 @@ export default function CompanyCard({ company } : CompanyWithJobs) {
             size={'6'}
             fallback={company?.companyName[0].toUpperCase() || ""}
           />
-        <h1 className="text-2xl font-semibold text-center">
+        <h1 className="text-2xl font-semibold text-center line-clamp-1">
           {company?.companyName}
         </h1>
-        <p className="text-lg line-clamp-3">{company?.companyDescription}</p>
+        <p className="text-lg line-clamp-1">{company?.companyDescription}</p>
         <span className="px-2 p-1 text-btn-primary bg-btn-primary/10 rounded-md text-sm">
           {company?.jobs?.length} open jobs
         </span>

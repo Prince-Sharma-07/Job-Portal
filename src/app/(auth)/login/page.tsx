@@ -53,11 +53,10 @@ export default function SignIn() {
       <Card className="w-full max-w-sm bg-[#ebf5f4]">
         <CardHeader className="text-center">
           <CardTitle className="text-xl ">Login to your account</CardTitle>
-          <CardDescription>
-            Enter your details below to login to your account
-            <div>
-              For guest login use: <br />
-              <strong>Email:</strong> guest@jobs.com <strong>Password:</strong>{" "}
+          <CardDescription className="flex justify-center">
+            <div className="text-start">
+              For Guest Login :-<br />
+              <strong>Email:</strong> guest@jobs.com <br/><strong>Password:</strong>{" "}
               12345678
             </div>
           </CardDescription>
@@ -96,7 +95,7 @@ export default function SignIn() {
                   id="password"
                   type="password"
                   name="password"
-                  placeholder="atleast 8 characters long"
+                  placeholder="Atleast 8 characters..."
                   className="bg-white"
                   required
                 />
