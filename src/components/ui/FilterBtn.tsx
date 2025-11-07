@@ -20,7 +20,6 @@ export default function FilterBtn({ query } : {query : string} ) {
             All Jobs <BriefcaseBusiness />
           </span>
           <SidebarTrigger className="md:hidden"/>
-
         </div>
       )}
     </div>
