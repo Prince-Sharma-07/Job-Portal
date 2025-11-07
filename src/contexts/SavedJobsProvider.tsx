@@ -1,8 +1,9 @@
 //@ts-nocheck
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
-import { useUserContext } from "./UserContextProvider";
 import { redirect } from "next/navigation";
+import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "sonner";
+import { useUserContext } from "./UserContextProvider";
 
 const savedContext = createContext(null);
 
@@ -21,14 +22,14 @@ export default function SavedJobsProvider({ children }) {
 
   function addToSave(job) {
     if (!userData) {
-      alert("Please login first!");
+      toast("Please login first!");
       redirect("/login");
     }
     if (saved.find((favJob) => job.id === favJob.id)) {
-      alert("job is already saved");
+      toast("job is already saved");
     } else {
       setSaved((prev) => [...prev, job]);
-      alert("Job Saved Successfully!");
+      toast("Job Saved Successfully!");
     }
   }
 

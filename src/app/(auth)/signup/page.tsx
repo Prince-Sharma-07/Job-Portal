@@ -11,16 +11,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { toast } from "sonner";
 
 export default function SignUp() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
+   const [loading, setLoading] = useState(false);
     const userObj = {
       name,
       email,
@@ -36,11 +38,13 @@ export default function SignUp() {
         }
       );
       if (res.redirected) {
+        toast("redirecting...");
         window.location.href = "/";
       }
     } catch (err: any) {
       alert(err.message);
     }
+    setLoading(false);
   }
 
   return (
@@ -121,10 +125,15 @@ export default function SignUp() {
                 </Link>
               </div>
               <Button
+                disabled={loading}
                 type="submit"
                 className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer"
               >
-                Register
+                {!loading ? (
+                  <>Register</>
+                ) : (
+                  <span className="loading loading-spinner loading-sm"></span>
+                )}
               </Button>
             </div>
           </form>

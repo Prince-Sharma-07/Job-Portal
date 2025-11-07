@@ -1,16 +1,11 @@
+import Heading from "@/components/sections/Heading";
+
 export default function ContactPage() {
   
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-black pt-15">
-        {/* Hero Section */}
-        <div className="text-center py-12 sm:py-16 px-4">
-          <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold">
-            Contact Us
-          </h1>
-        </div>
-      </header>
+      <Heading name="Contact Us"/>
 
       {/* Main Content */}
       <main className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12">

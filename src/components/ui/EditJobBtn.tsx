@@ -3,6 +3,7 @@ import { JobWithCompany } from "@/types";
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { Edit } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 type addJob = {
   job_title: string;
@@ -41,7 +42,7 @@ export default function EditJobBtn({ job } : {job : JobWithCompany}) {
         }
       );
       const data = await res.json();
-      alert(data.message);
+      toast(data.message);
     } catch (err: any) {
       alert(err.message);
     }

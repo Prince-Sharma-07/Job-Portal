@@ -5,6 +5,7 @@ import { Badge, Button, Card, Dialog, Flex, Spinner } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import { Application, User } from "../../../generated/prisma";
 import { Trash } from "lucide-react";
+import { toast } from "sonner";
 
 export default function ViewApplicants({ job }: { job: JobWithCompany }) {
   const { userData } = useUserContext();
@@ -32,10 +33,10 @@ export default function ViewApplicants({ job }: { job: JobWithCompany }) {
         { method: "DELETE" }
       );
       const data = await res.json();
-      alert(data.data.message);
+      toast(data.data.message);
       window.location.href = ''
     } catch (err) {
-      alert("something went wrong");
+      toast("something went wrong");
     }
   }
 
@@ -53,7 +54,7 @@ export default function ViewApplicants({ job }: { job: JobWithCompany }) {
 
       <Dialog.Content maxWidth="450px">
         <Dialog.Title>Job Applicants</Dialog.Title>
-        <Dialog.Description size="2" mb="4">
+        <Dialog.Description size="2" mb="4" className="font-medium">
           List of top Applicants
         </Dialog.Description>
 

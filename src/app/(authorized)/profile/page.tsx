@@ -1,48 +1,19 @@
 "use client";
+import Heading from "@/components/sections/Heading";
 import EditUser from "@/components/ui/EditUser";
 import { useUserContext } from "@/contexts/UserContextProvider";
-import { Edit } from "lucide-react";
 import Link from "next/link";
-
-// Mock data - replace with actual data from your database
-// const userData = {
-//   id: "64f8b1a2c3d4e5f6g7h8i9j0",
-//   name: "John Smith",
-//   email: "john.smith@example.com",
-//   company: {
-//     name: "Tech Solutions Inc."
-//   },
-//   reviews: [
-//     { id: "1", rating: 5, comment: "Excellent work quality and timely delivery" },
-//     { id: "2", rating: 4, comment: "Good communication and professional approach" },
-//     { id: "3", rating: 5, comment: "Highly skilled and reliable team member" }
-//   ],
-//   applications: [
-//     { id: "1", jobTitle: "Frontend Developer", company: "StartupXYZ", status: "Under Review", appliedDate: "2024-08-15" },
-//     { id: "2", jobTitle: "React Developer", company: "TechCorp", status: "Shortlisted", appliedDate: "2024-08-10" },
-//     { id: "3", jobTitle: "Full Stack Developer", company: "WebSolutions", status: "Rejected", appliedDate: "2024-08-05" }
-//   ]
-// }
 
 export default function ProfilePage() {
   const { userData } = useUserContext();
 
   return (
     <div className="min-h-screen">
-      
-      <header className="bg-black pt-15">
-      
-        <div className="text-center py-12 md:py-16">
-          <h1 className="text-white text-3xl md:text-5xl font-bold">
-            My Profile
-          </h1>
-        </div>
-      </header>
 
-
+      <Heading name="My Profile" />
+      
       <main className="px-8 py-12">
         <div className="max-w-6xl mx-auto">
-   
           <div className="dark:bg-white/10 rounded-xl p-6 mb-8 shadow-sm border flex items-start md:items-center justify-between">
             <div className="flex max-md:flex-col md:items-center gap-6">
               <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center">
@@ -68,13 +39,11 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <EditUser/>
+            <EditUser />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
             <div className="space-y-8">
-             
               <div className="dark:bg-white/10 rounded-xl p-6 shadow-sm border">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                   Personal Information
@@ -131,7 +100,6 @@ export default function ProfilePage() {
             </div>
 
             <div>
-          
               <div className="dark:bg-white/10 flex flex-col gap-3 rounded-xl px-6 py-3 shadow-sm border h-44 overflow-auto">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                   Jobs Applied ({userData?.applications.length})

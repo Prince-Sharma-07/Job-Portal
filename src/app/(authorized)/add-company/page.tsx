@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { redirect } from "next/navigation";
 import { FormEvent } from "react";
+import { toast } from "sonner";
 
 export default function AddCompany() {
   async function handleCreateCompany(e: FormEvent): Promise<void> {
@@ -34,7 +35,7 @@ export default function AddCompany() {
     if (data.success) {
       redirect("/company");
     }
-    alert(data.message);
+    toast(data.message);
   }
 
   return (

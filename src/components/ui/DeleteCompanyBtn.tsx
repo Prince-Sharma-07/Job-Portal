@@ -3,6 +3,7 @@ import { useUserContext } from "@/contexts/UserContextProvider";
 import { Trash } from "lucide-react";
 import { redirect } from "next/navigation";
 import { Company } from "../../../generated/prisma";
+import { toast } from "sonner";
 
 export default function DeleteCompanyBtn({
   id,
@@ -20,7 +21,7 @@ export default function DeleteCompanyBtn({
       }
     );
     const data = await res.json();
-    alert(data.message);
+    toast(data.message);
     redirect("/company");
   }
 

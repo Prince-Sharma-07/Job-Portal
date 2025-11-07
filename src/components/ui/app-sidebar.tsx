@@ -47,16 +47,6 @@ export function AppSidebar() {
       <SidebarContent  className="bg-[#ebf5f4] text-black">
         <SidebarGroup className="p-0 ">
           <SidebarGroupContent className="p-0">
-              {/* {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))} */}
               <FilterBar />
           </SidebarGroupContent>
         </SidebarGroup>
