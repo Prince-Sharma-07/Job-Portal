@@ -13,7 +13,7 @@ export default function DeleteJobBtn({ job }: { job: Job }) {
         }
       );
       const data = await res.json();
-      alert(data?.message)
+      toast(data?.message)
     } catch (err: any) {
       console.log(err.message);
       toast("Something went wrong!");
@@ -40,7 +40,7 @@ export default function DeleteJobBtn({ job }: { job: Job }) {
             </Button>
           </AlertDialog.Cancel>
           <AlertDialog.Action>
-            <Button onClick={handleDelete} variant="solid" color="red">
+            <Button onClick={handleDelete} variant="solid">
               Delete
             </Button>
           </AlertDialog.Action>

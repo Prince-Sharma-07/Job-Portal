@@ -11,19 +11,27 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { toast } from "sonner";
 
 export default function SignIn() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError("")
+    setLoading(true);
     const userObj = {
       email,
       password,
     };
+    if(password.length < 8){
+      setError("Password must contain atleast 8 characters.")
+      setLoading(false)
+      return;
+    }
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_HOST_NAME as string}/api/login`,
@@ -33,11 +41,11 @@ export default function SignIn() {
         }
       );
       if (res.redirected) {
+        toast("redirecting...")
         window.location.href = res.url;
       }
       else{
         const data = await res.json();
-        console.log("the->",data)
         setError(data.message)
       }
     } catch (err: any) {
@@ -46,6 +54,7 @@ export default function SignIn() {
       // else if vo instance of the Error object hai to message key available hogi.
       alert(err.message);
     }
+    setLoading(false)
   }
 
   return (
@@ -126,7 +135,11 @@ export default function SignIn() {
                 type="submit"
                 className="w-full text-white bg-teal-600 hover:bg-teal-700 cursor-pointer"
               >
-                Login
+                {!loading ? (
+                  <>Login</>
+                ) : (
+                  <span className="loading loading-spinner loading-sm"></span>
+                )}
               </Button>
             </div>
           </form>
