@@ -10,6 +10,7 @@ export default function Modebtn() {
         value="synthwave"
         className="theme-controller"
         onClick={() => setIsDark(!isDark)}
+        defaultChecked={isDark}
       />
 
       <svg

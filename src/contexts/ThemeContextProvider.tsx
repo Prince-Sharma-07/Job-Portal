@@ -1,7 +1,7 @@
 "use client";
 import { ThemeContextType } from "@/types";
 import { Theme } from "@radix-ui/themes";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 const themeContext = createContext<ThemeContextType>({
   isDark: false,
@@ -13,7 +13,18 @@ export default function ThemeContextProvider({
 }: {
   children: ReactNode;
 }) {
-  const [isDark, setIsDark] = useState<boolean>(false);
+
+ const [isDark, setIsDark] = useState<boolean>(false);
+ 
+ useEffect(() => {
+    const stored = localStorage.getItem("Mode");
+    if (stored === "true") setIsDark(true);
+    else setIsDark(false);
+  }, []);
+
+   useEffect(() => {
+    localStorage.setItem("Mode", String(isDark));
+  }, [isDark]);
 
   return (
     <themeContext.Provider value={{ isDark, setIsDark }}>

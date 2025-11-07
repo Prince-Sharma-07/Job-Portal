@@ -35,6 +35,9 @@ export async function GET(req: NextRequest) {
   const jobType = urlObj.searchParams.get("jt") || "";
   const empType = urlObj.searchParams.get("et") || "";
   const salary = urlObj.searchParams.get("sr") || "";
+  const page = parseInt(urlObj.searchParams.get("pg") || "1", 10);
+  const limit = parseInt(urlObj.searchParams.get("lim") || "10", 10);
+  const skip = (page - 1) * limit;
 
   const where: any = {
     OR: [
@@ -55,14 +58,8 @@ export async function GET(req: NextRequest) {
     ],
   };
 
-  if (jobType) {
-    where.job_type = jobType;
-  }
-  
-  if (empType) {
-    where.employment_type = empType;
-  }
-
+  if (jobType) where.job_type = jobType;
+  if (empType) where.employment_type = empType;
   if (salary) {
     where.job_salary = {
       gte: parseFloat(salary),
@@ -70,19 +67,28 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const jobs = await prismaClient.job.findMany({
-      where: where,
-      include: {
-        company: {
-          include: {
-            owner: true,
+    const [jobs, totalCount] = await Promise.all([
+      prismaClient.job.findMany({
+        where,
+        include: {
+          company: {
+            include: {
+              owner: true,
+            },
           },
         },
-      },
-    });
+        skip,
+        take: limit,
+        orderBy: { id: "desc" },
+      }),
+      prismaClient.job.count({ where }),
+    ]);
     return NextResponse.json({
       success: true,
       data: jobs,
+      totalCount,
+      totalPages: Math.ceil(totalCount / limit),
+      currentPage: page,
     });
   } catch (err: any) {
     return NextResponse.json({
