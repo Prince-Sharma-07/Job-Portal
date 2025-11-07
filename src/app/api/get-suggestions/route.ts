@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
         id: true,
         job_title: true,
       },
+      take: 5,
     });
     return NextResponse.json({
       success: true,
