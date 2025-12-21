@@ -68,7 +68,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 py-6 lg:py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-500 text-xs sm:text-sm text-center sm:text-left">
-              © {new Date().getFullYear()} Job Portal. Developed by Prince Sharma
+              © {new Date().getFullYear()} Job Portal. Developed by Lakshay Kaushal
             </p>
           </div>
         </div>
