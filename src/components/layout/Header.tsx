@@ -31,6 +31,9 @@ export default function Header() {
         <Link href={"/company"} className="hover:text-white curser-pointer">
           Companies
         </Link>
+        <Link href={"/resume-builder"} className="hover:text-white curser-pointer">
+          AI Resume Builder
+        </Link>
         <Link href={"/contact-us"} className="hover:text-white">
           Contact us
         </Link>

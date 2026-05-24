@@ -78,7 +78,16 @@ export default function SideBar({
             </Link>
           </li>
           <li>
-            <Link className="text-lg px-2 py-2 rounded-md hover:bg-gray-800 hover:text-white transition" href={"/contact-us"}>
+            <Link
+              href={"/resume-builder"}
+              onClick={handleClose}
+              className="text-lg px-2 py-2 rounded-md hover:bg-gray-800 hover:text-white transition"
+            >
+              AI Resume Builder
+            </Link>
+          </li>
+          <li>
+            <Link className="text-lg px-2 py-2 rounded-md hover:bg-gray-800 hover:text-white transition" href={"/contact-us"} onClick={handleClose}>
               Contact us
             </Link>
           </li>

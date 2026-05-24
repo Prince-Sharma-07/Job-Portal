@@ -3,6 +3,7 @@ import Heading from "@/components/sections/Heading";
 import EditUser from "@/components/ui/EditUser";
 import { useUserContext } from "@/contexts/UserContextProvider";
 import Link from "next/link";
+import { Sparkles, FileText } from "lucide-react";
 
 export default function ProfilePage() {
   const { userData } = useUserContext();
@@ -123,6 +124,24 @@ export default function ProfilePage() {
                     </Link>
                   ))}
                 </div>
+              </div>
+
+              <div className="dark:bg-white/10 rounded-xl p-6 shadow-sm border mt-8">
+                <div className="flex items-center gap-2 text-teal-600 dark:text-teal-400 font-bold text-sm mb-2">
+                  <Sparkles className="h-4 w-4" /> AI Resume Builder
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  Need a professional CV?
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                  Create a tailored, high-converting resume in minutes with our interactive AI Resume Builder.
+                </p>
+                <Link
+                  href="/resume-builder"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm transition cursor-pointer"
+                >
+                  <FileText className="h-4 w-4" /> Build Resume Now
+                </Link>
               </div>
 
               <div className="dark:bg-white/10 rounded-xl p-6 shadow-sm border mt-8">
